@@ -1,0 +1,134 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+
+body {
+  font-family: 'Nunito', sans-serif;
+  background: #f5eee6;          
+  color: #4b3829;               
+}
+
+.page {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 20px 16px 32px;
+}
+
+/* Header */
+.header {
+  text-align: center;
+  margin-bottom: 24px;
+}
+
+.badge {
+  display: inline-block;
+  padding: 4px 10px;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  border-radius: 999px;
+  border: 1px solid #e1c5aa;
+  background: #fff7f0;
+  color: #7b5a3a;
+  margin-bottom: 8px;
+}
+
+.header h1 {
+  font-size: 1.9rem;
+  margin-bottom: 6px;
+}
+
+.lead {
+  font-size: 0.95rem;
+  color: #7e6550;
+}
+
+/* Options layout */
+.options {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-top: 24px;
+}
+
+/* Cards */
+.card {
+  flex: 1 1 260px;
+  text-decoration: none;
+  color: inherit;
+  background: #fffaf5;
+  border: 1px solid #e1c5aa;
+  border-radius: 14px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 8px 16px rgba(120, 90, 60, 0.12);
+  transition: transform 0.15s ease, box-shadow 0.15s ease, border-color 0.15s ease;
+}
+
+.card:hover {
+  transform: translateY(-3px);
+  border-color: #c99364;
+  box-shadow: 0 12px 22px rgba(120, 90, 60, 0.18);
+}
+
+
+.card-image {
+  width: 100%;
+  height: 170px;
+  object-fit: cover;
+}
+
+/* Card content */
+.card-body {
+  padding: 14px 14px 16px;
+}
+
+.card-body h2 {
+  font-size: 1.2rem;
+  margin-bottom: 6px;
+}
+
+.card-body p {
+  font-size: 0.95rem;
+  color: #7e6550;
+  margin-bottom: 10px;
+}
+
+/* Link-style pill */
+.card-link {
+  display: inline-block;
+  font-size: 0.9rem;
+  font-weight: 600;
+  padding: 6px 10px;
+  border-radius: 999px;
+  background: #c5d9c0;  
+  color: #3f3a2f;
+}
+
+/* Cat card: hint of rose */
+.options .card:nth-child(2) .card-link {
+  background: #f3b4c1;
+}
+
+/* Footer */
+.footer {
+  margin-top: 24px;
+  text-align: center;
+  font-size: 0.85rem;
+  color: #7e6550;
+}
+
+/* Simple responsive tweak */
+@media (max-width: 640px) {
+  .header h1 {
+    font-size: 1.6rem;
+  }
+
+  .card-image {
+    height: 150px;
+  }
+}
