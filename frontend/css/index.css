@@ -9,10 +9,18 @@ body {
     font-family: 'Nunito', sans-serif;
     background: #f5eee6;
     color: #4b3829;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+main {
+    flex-grow: 1;
 }
 
 .site-header {
     height: 3em;
+    margin-bottom: 16px;
 }
 
 .site-menu {
@@ -21,10 +29,11 @@ body {
     align-items: stretch;
 
     width: 100vw;
-    padding-right: 20px;
+    padding-right: 4px;
 
     background-color: rgba(255, 255, 255, 0.7);
     backdrop-filter: blur(4px);
+    box-shadow: 0 8px 16px rgba(120, 90, 60, 0.12);
 
     list-style: none;
 }
@@ -47,14 +56,14 @@ body {
 
 .nav-item {
     text-decoration: none;
-    color: black;
+    color: inherit;
     font-weight: 500;
     margin: auto 0;
 }
 
 .site-menu li:not(.spacer):hover {
-    background-color: rgba(220, 220, 220, 0.37);
-    color: rgba(0, 0, 0, 0.5);
+    background-color: rgba(220, 220, 220, 0.26);
+    color: rgba(0, 0, 0);
 }
 
 .nav-item.logo {
@@ -75,4 +84,57 @@ body {
 .nav-item.logo .logo-image {
     width: 2.6em;
     margin-right: 12px;
+}
+
+footer {
+    background-color: rgba(219, 129, 45, 0.5);
+    box-shadow: rgba(120, 90, 60, 0.12) 0px 3px 8px;
+
+    padding: 16px 24px;
+    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+}
+
+footer .footer-nav {
+    display: flex;
+    justify-content: space-around;
+}
+
+footer .nav-list {
+    list-style: none;
+    columns: 3;
+}
+
+footer .nav-item>a {
+    text-decoration: none;
+    color: inherit;
+}
+
+footer .nav-item>a:hover {
+    color: black;
+}
+
+footer .copyright {
+    margin-top: 32px;
+    font-size: 12px;
+    text-align: center;
+}
+
+footer .social-links a {
+    text-decoration: none;
+}
+
+.footer-site-logo {
+    display: flex;
+    flex-direction: column;
+}
+
+.footer-site-logo>* {
+    margin: 0 auto;
+}
+
+.footer-site-logo .tagline {
+    font-size: 12px;
+    font-weight: 100;
 }
