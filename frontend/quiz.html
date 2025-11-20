@@ -17,7 +17,6 @@
 
   <div class="page">
     <div class="container">
-
       <header class="header">
         <p class="badge">Pawfect Match</p>
         <h1>What are you looking for today?</h1>
@@ -27,7 +26,7 @@
       </header>
 
       <main class="options">
-        <a href="#" class="card">
+        <a href="#dog-quiz" class="card">
           <img src="images/dog.webp" alt="Dog" class="card-image">
           <div class="card-body">
             <h2>I'm into dogs</h2>
@@ -38,7 +37,7 @@
           </div>
         </a>
 
-        <a href="#" class="card">
+        <a href="#cat-quiz" class="card">
           <img src="images/cat.jpg" alt="Cat" class="card-image">
           <div class="card-body">
             <h2>I'm into cats</h2>
@@ -57,5 +56,180 @@
     </div>
   </div>
 
+  <section id="dog-quiz" class="quiz-section">
+    <h2 class="quiz-title">Dog Breed <br> Quiz</h2>
+      <div id="dog-quiz-container" class="quiz-card">
+        <!-- Question area -->
+        <div id="question-box">
+          <h3 id="question-text"></h3>
+
+          <div id="options"></div>
+        </div>
+        <!-- Next button -->
+        <button id="next-btn" class="quiz-btn" disabled>Next</button>
+        <!-- Result -->
+        <div id="result-box" class="hidden">
+          <h3>Your Ideal Dog Type:</h3>
+          <p id="dog-result"></p>
+        </div>
+      </div>
+  </section>
+
+
+  <section id="cat-quiz">
+    <h2>Cat Quiz</h2>
+    <!-- cat quiz questions go here -->
+  </section>
+
+  <script>
+  // Quiz questions and scoring logic
+  const dogQuestions = [
+    {
+      q: "How active is your lifestyle?",
+      options: {
+        "Very active (hiking, running)": "high_energy",
+        "Moderately active": "medium_energy",
+        "Relaxed, mostly indoors": "low_energy"
+      }
+    },
+    {
+      q: "How much space do you have at home?",
+      options: {
+        "Large yard / lots of space": "large_home",
+        "Medium home": "medium_home",
+        "Small apartment": "small_home"
+      }
+    },
+    {
+      q: "What's your experience with dogs?",
+      options: {
+        "Experienced dog owner": "experienced",
+        "Some experience": "average",
+        "First-time owner": "beginner"
+      }
+    },
+    {
+      q: "How much grooming can you handle?",
+      options: {
+        "Daily grooming is fine": "high_groom",
+        "Sometimes is okay": "medium_groom",
+        "Low-maintenance only": "low_groom"
+      }
+    },
+    {
+      q: "Do you want a family-friendly dog?",
+      options: {
+        "Yes, very important": "family",
+        "Somewhat important": "neutral",
+        "Not important": "independent"
+      }
+    },
+    {
+      q: "Preferred dog size?",
+      options: {
+        "Small": "small_dog",
+        "Medium": "medium_dog",
+        "Large": "large_dog"
+      }
+    }
+  ];
+
+  let currentQuestion = 0;
+  let answers = [];
+
+  // DOM Elements
+  const questionText = document.getElementById("question-text");
+  const optionsBox = document.getElementById("options");
+  const nextBtn = document.getElementById("next-btn");
+  const resultBox = document.getElementById("result-box");
+  const resultText = document.getElementById("dog-result");
+
+  // Load a question
+  function loadQuestion() {
+    let q = dogQuestions[currentQuestion];
+    questionText.textContent = q.q;
+
+    optionsBox.innerHTML = "";
+    nextBtn.disabled = true;
+
+    Object.keys(q.options).forEach(option => {
+      const btn = document.createElement("button");
+      btn.className = "option-btn";
+      btn.textContent = option;
+
+      btn.onclick = () => {
+        document
+          .querySelectorAll(".option-btn")
+          .forEach(b => b.classList.remove("selected"));
+        btn.classList.add("selected");
+        nextBtn.disabled = false;
+        answers[currentQuestion] = q.options[option];
+      };
+
+      optionsBox.appendChild(btn);
+    });
+  }
+
+  // Result calculation
+  function calculateResult() {
+    const score = {
+      high_energy: 0,
+      medium_energy: 0,
+      low_energy: 0,
+      large_home: 0,
+      medium_home: 0,
+      small_home: 0,
+      experienced: 0,
+      average: 0,
+      beginner: 0,
+      high_groom: 0,
+      medium_groom: 0,
+      low_groom: 0,
+      family: 0,
+      neutral: 0,
+      independent: 0,
+      small_dog: 0,
+      medium_dog: 0,
+      large_dog: 0
+    };
+
+    answers.forEach(a => score[a]++);
+
+    // Simple breed type logic
+    let result = "";
+
+    if (score.high_energy >= 2 && score.large_home >= 1)
+      result = "High-energy dogs (Border Collie, Husky, Australian Shepherd)";
+    else if (score.low_energy >= 2 && score.small_home >= 1)
+      result = "Low-energy companion dogs (Pug, Shih Tzu, Basset Hound)";
+    else if (score.medium_energy >= 2)
+      result = "Balanced family dogs (Labrador, Golden Retriever)";
+    else if (score.small_dog >= 2)
+      result = "Small apartment-friendly dogs (Corgi, French Bulldog)";
+    else if (score.beginner >= 2)
+      result = "Beginner-friendly dogs (Cavalier King Charles, Beagle)";
+    else
+      result = "A well-balanced, versatile dog (Mixed breeds welcome!)";
+
+    resultText.textContent = result;
+  }
+
+  // Next button handler
+  nextBtn.onclick = () => {
+    currentQuestion++;
+
+    if (currentQuestion < dogQuestions.length) {
+      loadQuestion();
+    } else {
+      // Show results
+      document.getElementById("question-box").classList.add("hidden");
+      nextBtn.classList.add("hidden");
+      resultBox.classList.remove("hidden");
+      calculateResult();
+    }
+  };
+  // Start quiz
+  loadQuestion();
+  </script>
 </body>
 </html>

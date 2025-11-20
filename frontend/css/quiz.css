@@ -4,10 +4,13 @@
   padding: 0;
 }
 
+html {
+  scroll-behavior: smooth;
+}
 
 body {
   font-family: 'Nunito', sans-serif;
-  background: #f5eee6;          
+  background: #f3d5b2;          
   color: #4b3829;               
 }
 
@@ -37,7 +40,7 @@ body {
 }
 
 .header h1 {
-  font-size: 1.9rem;
+  font-size: 2.5rem;
   margin-bottom: 6px;
 }
 
@@ -132,3 +135,160 @@ body {
     height: 150px;
   }
 }
+
+.container {
+  background: rgba(255, 255, 255, 0.726);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border-radius: 20px;
+  padding: 40px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+}
+
+/* Overall Quiz Section */
+.quiz-section {
+  margin-top: 100px;
+  display: flex;
+  justify-content: center;
+  padding: 20px;
+  background-color: #4b3829;
+}
+
+
+/* Title */
+.quiz-title {
+  text-align: center;
+  font-size: 3rem;
+  font-weight: 700;
+  margin-top: 150px;
+  margin-bottom: 25px;
+  margin-right: 50px;
+  margin-left: 20px;
+  color: #fff;
+  text-shadow: 0 2px 6px rgba(0,0,0,0.25);
+}
+
+/* Glass Card */
+.quiz-card {
+  background: rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+
+  padding: 40px;
+  margin: 20px 20px 20px 20px;
+  border-radius: 28px;
+  max-width: 650px;
+  width: 100%;
+
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  box-shadow: 0 10px 35px rgba(0, 0, 0, 0.25);
+
+  animation: fadeIn 0.5s ease;
+}
+
+/* Question Text */
+#question-text {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 25px;
+  color: #fff;
+}
+
+/* Answer Options */
+#options {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.option-btn {
+  padding: 16px 18px;
+  background: rgba(255, 255, 255, 0.20);
+  border: 1px solid rgba(255, 255, 255, 0.35);
+
+  font-size: 1.05rem;
+  border-radius: 16px;
+  cursor: pointer;
+
+  color: white;
+  text-align: center;
+
+  transition: 0.25s ease-in-out;
+}
+
+.option-btn:hover {
+  background: rgba(255, 255, 255, 0.32);
+  transform: scale(1.02);
+}
+
+.option-btn.selected {
+  background: #4a90e2;
+  border-color: #4a90e2;
+  color: #fff;
+  transform: scale(1.03);
+}
+
+/* Next Button */
+.quiz-btn {
+  margin-top: 25px;
+  padding: 16px;
+  width: 100%;
+
+  background: linear-gradient(135deg, #4a90e2, #357ABD);
+  color: white;
+
+  border: none;
+  border-radius: 16px;
+  font-size: 1.15rem;
+  font-weight: 600;
+
+  cursor: pointer;
+  transition: 0.25s;
+}
+
+.quiz-btn:hover:not(:disabled) {
+  transform: scale(1.02);
+  box-shadow: 0 8px 20px rgba(74, 144, 226, 0.3);
+}
+
+.quiz-btn:disabled {
+  background: rgba(255, 255, 255, 0.25);
+  cursor: not-allowed;
+}
+
+/* Result Box */
+#result-box {
+  text-align: center;
+  margin-top: 25px;
+  padding: 25px;
+
+  background: rgba(255, 255, 255, 0.12);
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+
+  animation: fadeIn 0.6s ease;
+}
+
+#result-box h3 {
+  font-size: 1.6rem;
+  font-weight: 700;
+  margin-bottom: 10px;
+  color: #fff;
+}
+
+#dog-result {
+  font-size: 1.25rem;
+  color: #e4f1ff;
+  font-weight: 500;
+}
+
+/* Simple Fade Animation */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+
+
