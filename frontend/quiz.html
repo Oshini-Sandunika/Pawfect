@@ -57,23 +57,29 @@
   </div>
 
   <section id="dog-quiz" class="quiz-section">
-    <h2 class="quiz-title">Dog Breed <br> Quiz</h2>
-      <div id="dog-quiz-container" class="quiz-card">
-        <!-- Question area -->
-        <div id="question-box">
-          <h3 id="question-text"></h3>
+    <h2 class="quiz-title">Dog Breed Quiz</h2>
 
-          <div id="options"></div>
-        </div>
-        <!-- Next button -->
-        <button id="next-btn" class="quiz-btn" disabled>Next</button>
-        <!-- Result -->
-        <div id="result-box" class="hidden">
-          <h3>Your Ideal Dog Type:</h3>
-          <p id="dog-result"></p>
-        </div>
+    <div id="dog-quiz-container" class="quiz-card">
+      <div id="progress-container">
+        <div id="progress-bar"></div>
       </div>
+      <div id="question-box">
+        <h3 id="question-text"></h3>
+        <div id="options"></div>
+      </div>
+
+      <button id="next-btn" class="quiz-btn" disabled>Next</button>
+      <button id="back-btn" class="quiz-btn secondary-btn hidden">Back</button>
+
+
+      <div id="result-box" class="hidden">
+        <h3>Your Ideal Dog Type</h3>
+        <p id="dog-result"></p>
+        <button id="restart-btn" class="quiz-btn">Start Again</button>
+      </div>
+    </div>
   </section>
+
 
 
   <section id="cat-quiz">
@@ -82,154 +88,460 @@
   </section>
 
   <script>
-  // Quiz questions and scoring logic
-  const dogQuestions = [
-    {
-      q: "How active is your lifestyle?",
-      options: {
-        "Very active (hiking, running)": "high_energy",
-        "Moderately active": "medium_energy",
-        "Relaxed, mostly indoors": "low_energy"
+    document.addEventListener("DOMContentLoaded", function () {
+      const questionText = document.getElementById("question-text");
+      const optionsBox   = document.getElementById("options");
+      const nextBtn      = document.getElementById("next-btn");
+      const resultBox    = document.getElementById("result-box");
+      const resultText   = document.getElementById("dog-result");
+
+      const backBtn = document.getElementById("back-btn");
+
+      /* ------------------------------------------
+      FULL 10-QUESTION DOG QUIZ WITH BREED SCORING
+      ------------------------------------------ */
+      const dogQuestions = [
+      {
+        q: "How active is your daily lifestyle?",
+        options: {
+          "Very active (running, hiking daily)": "very_active",
+          "Moderately active": "moderate_active",
+          "Lightly active": "light_active",
+          "Mostly relaxed / indoors": "low_active"
+        }
+      },
+      {
+        q: "How much living space do you have?",
+        options: {
+          "Large house with yard": "large_space",
+          "Medium house/apartment": "medium_space",
+          "Small apartment": "small_space",
+          "Tiny living space / studio": "tiny_space"
+        }
+      },
+      {
+        q: "How much grooming can you manage?",
+        options: {
+          "High grooming (daily brushing okay)": "high_groom",
+          "Medium grooming": "medium_groom",
+          "Low grooming only": "low_groom",
+          "Minimal (almost no grooming)": "minimal_groom"
+        }
+      },
+      {
+        q: "What is your experience with dogs?",
+        options: {
+          "Experienced dog owner": "experienced",
+          "Some experience": "intermediate",
+          "Beginner": "beginner",
+          "Never owned a dog": "first_time"
+        }
+      },
+      {
+        q: "What size dog do you prefer?",
+        options: {
+          "Small": "size_small",
+          "Medium": "size_medium",
+          "Large": "size_large",
+          "No preference": "size_any"
+        }
+      },
+      {
+        q: "How trainable should your dog be?",
+        options: {
+          "Highly trainable": "high_train",
+          "Medium trainability": "medium_train",
+          "Low trainability": "low_train",
+          "Doesn't matter": "train_any"
+        }
+      },
+      {
+        q: "How much barking can you tolerate?",
+        options: {
+          "Very low (quiet dogs only)": "quiet_only",
+          "Some barking is okay": "some_noise",
+          "Barking doesn’t bother me": "noise_ok",
+          "I prefer vocal dogs": "vocal"
+        }
+      },
+      {
+        q: "What climate suits your home best?",
+        options: {
+          "Cold climate": "cold_climate",
+          "Warm climate": "warm_climate",
+          "Both / mixed": "mixed_climate",
+          "Hot climate only": "hot_climate"
+        }
+      },
+      {
+        q: "How much time daily can you dedicate to your dog?",
+        options: {
+          "5+ hours": "time_5",
+          "2–4 hours": "time_3",
+          "1–2 hours": "time_1",
+          "Less than 1 hour": "time_low"
+        }
+      },
+      {
+        q: "Do you need a family- and kid-friendly dog?",
+        options: {
+          "Very important": "family_high",
+          "Somewhat important": "family_medium",
+          "Not important": "family_low",
+          "Not needed": "family_none"
+        }
       }
-    },
-    {
-      q: "How much space do you have at home?",
-      options: {
-        "Large yard / lots of space": "large_home",
-        "Medium home": "medium_home",
-        "Small apartment": "small_home"
-      }
-    },
-    {
-      q: "What's your experience with dogs?",
-      options: {
-        "Experienced dog owner": "experienced",
-        "Some experience": "average",
-        "First-time owner": "beginner"
-      }
-    },
-    {
-      q: "How much grooming can you handle?",
-      options: {
-        "Daily grooming is fine": "high_groom",
-        "Sometimes is okay": "medium_groom",
-        "Low-maintenance only": "low_groom"
-      }
-    },
-    {
-      q: "Do you want a family-friendly dog?",
-      options: {
-        "Yes, very important": "family",
-        "Somewhat important": "neutral",
-        "Not important": "independent"
-      }
-    },
-    {
-      q: "Preferred dog size?",
-      options: {
-        "Small": "small_dog",
-        "Medium": "medium_dog",
-        "Large": "large_dog"
-      }
-    }
-  ];
+    ];
 
-  let currentQuestion = 0;
-  let answers = [];
+    /* ------------------------------------------
+       BREED SCORING
+    ------------------------------------------ */
 
-  // DOM Elements
-  const questionText = document.getElementById("question-text");
-  const optionsBox = document.getElementById("options");
-  const nextBtn = document.getElementById("next-btn");
-  const resultBox = document.getElementById("result-box");
-  const resultText = document.getElementById("dog-result");
-
-  // Load a question
-  function loadQuestion() {
-    let q = dogQuestions[currentQuestion];
-    questionText.textContent = q.q;
-
-    optionsBox.innerHTML = "";
-    nextBtn.disabled = true;
-
-    Object.keys(q.options).forEach(option => {
-      const btn = document.createElement("button");
-      btn.className = "option-btn";
-      btn.textContent = option;
-
-      btn.onclick = () => {
-        document
-          .querySelectorAll(".option-btn")
-          .forEach(b => b.classList.remove("selected"));
-        btn.classList.add("selected");
-        nextBtn.disabled = false;
-        answers[currentQuestion] = q.options[option];
-      };
-
-      optionsBox.appendChild(btn);
-    });
-  }
-
-  // Result calculation
-  function calculateResult() {
-    const score = {
-      high_energy: 0,
-      medium_energy: 0,
-      low_energy: 0,
-      large_home: 0,
-      medium_home: 0,
-      small_home: 0,
-      experienced: 0,
-      average: 0,
-      beginner: 0,
-      high_groom: 0,
-      medium_groom: 0,
-      low_groom: 0,
-      family: 0,
-      neutral: 0,
-      independent: 0,
-      small_dog: 0,
-      medium_dog: 0,
-      large_dog: 0
+    let breedScores = {
+      "Labrador Retriever": 0,
+      "Golden Retriever": 0,
+      "German Shepherd": 0,
+      "Border Collie": 0,
+      "Husky": 0,
+      "Beagle": 0,
+      "French Bulldog": 0,
+      "Pug": 0,
+      "Shih Tzu": 0,
+      "Corgi": 0
     };
 
-    answers.forEach(a => score[a]++);
+    /* ------------------------------------------
+       SCORING MATRIX
+       Each answer boosts certain breeds
+    ------------------------------------------ */
 
-    // Simple breed type logic
-    let result = "";
+    function applyScore(answer) {
+      switch (answer) {
+        case "very_active":
+          breedScores["Border Collie"] += 3;
+          breedScores["Husky"] += 3;
+          breedScores["German Shepherd"] += 2;
+          breedScores["Labrador Retriever"] += 1;
+          break;
 
-    if (score.high_energy >= 2 && score.large_home >= 1)
-      result = "High-energy dogs (Border Collie, Husky, Australian Shepherd)";
-    else if (score.low_energy >= 2 && score.small_home >= 1)
-      result = "Low-energy companion dogs (Pug, Shih Tzu, Basset Hound)";
-    else if (score.medium_energy >= 2)
-      result = "Balanced family dogs (Labrador, Golden Retriever)";
-    else if (score.small_dog >= 2)
-      result = "Small apartment-friendly dogs (Corgi, French Bulldog)";
-    else if (score.beginner >= 2)
-      result = "Beginner-friendly dogs (Cavalier King Charles, Beagle)";
-    else
-      result = "A well-balanced, versatile dog (Mixed breeds welcome!)";
+        case "moderate_active":
+          breedScores["Golden Retriever"] += 2;
+          breedScores["Labrador Retriever"] += 2;
+          breedScores["Beagle"] += 1;
+          break;
 
-    resultText.textContent = result;
-  }
+        case "light_active":
+          breedScores["French Bulldog"] += 2;
+          breedScores["Corgi"] += 1;
+          break;
 
-  // Next button handler
-  nextBtn.onclick = () => {
-    currentQuestion++;
+        case "low_active":
+          breedScores["Pug"] += 3;
+          breedScores["Shih Tzu"] += 2;
+          break;
 
-    if (currentQuestion < dogQuestions.length) {
-      loadQuestion();
-    } else {
-      // Show results
+        /* --- Space --- */
+
+        case "large_space":
+          breedScores["German Shepherd"] += 2;
+          breedScores["Husky"] += 2;
+          breedScores["Border Collie"] += 1;
+          break;
+
+        case "medium_space":
+          breedScores["Golden Retriever"] += 1;
+          breedScores["Labrador Retriever"] += 1;
+          break;
+
+        case "small_space":
+          breedScores["French Bulldog"] += 2;
+          breedScores["Pug"] += 2;
+          break;
+
+        case "tiny_space":
+          breedScores["Shih Tzu"] += 2;
+          breedScores["Corgi"] += 1;
+          break;
+
+        /* --- Grooming --- */
+
+        case "high_groom":
+          breedScores["Shih Tzu"] += 2;
+          break;
+
+        case "medium_groom":
+          breedScores["Golden Retriever"] += 1;
+          break;
+
+        case "low_groom":
+          breedScores["Labrador Retriever"] += 1;
+          breedScores["Beagle"] += 1;
+          break;
+
+        case "minimal_groom":
+          breedScores["Husky"] += 1;  
+          break;
+
+        /* --- Experience --- */
+
+        case "experienced":
+          breedScores["German Shepherd"] += 2;
+          breedScores["Husky"] += 1;
+          break;
+
+        case "intermediate":
+          breedScores["Beagle"] += 1;
+          break;
+
+        case "beginner":
+          breedScores["Golden Retriever"] += 2;
+          breedScores["Labrador Retriever"] += 2;
+          break;
+
+        case "first_time":
+          breedScores["Corgi"] += 1;
+          breedScores["Pug"] += 1;
+          break;
+
+        /* --- Size --- */
+
+        case "size_small":
+          breedScores["Pug"] += 2;
+          breedScores["Corgi"] += 1;
+          breedScores["Shih Tzu"] += 1;
+          breedScores["French Bulldog"] += 1;
+          break;
+
+        case "size_medium":
+          breedScores["Beagle"] += 1;
+          breedScores["Corgi"] += 1;
+          break;
+
+        case "size_large":
+          breedScores["Golden Retriever"] += 2;
+          breedScores["German Shepherd"] += 2;
+          breedScores["Husky"] += 1;
+          break;
+
+        /* --- Trainability --- */
+
+        case "high_train":
+          breedScores["Golden Retriever"] += 2;
+          breedScores["German Shepherd"] += 2;
+          breedScores["Border Collie"] += 3;
+          break;
+
+        case "medium_train":
+          breedScores["Labrador Retriever"] += 1;
+          break;
+
+        case "low_train":
+          breedScores["Beagle"] += 1; // stubborn
+          break;
+
+        /* --- Barking --- */
+
+        case "quiet_only":
+          breedScores["Shih Tzu"] += 2;
+          breedScores["French Bulldog"] += 1;
+          break;
+
+        case "some_noise":
+          breedScores["Golden Retriever"] += 1;
+          break;
+
+        case "noise_ok":
+          breedScores["Beagle"] += 1;
+          break;
+
+        case "vocal":
+          breedScores["Husky"] += 2;
+          breedScores["Beagle"] += 1;
+          break;
+
+        /* --- Climate --- */
+
+        case "cold_climate":
+          breedScores["Husky"] += 3;
+          break;
+
+        case "warm_climate":
+          breedScores["Pug"] += 1;
+          breedScores["Shih Tzu"] += 1;
+          breedScores["Beagle"] += 1;
+          break;
+
+        case "hot_climate":
+          breedScores["Beagle"] += 2;
+          break;
+
+        /* --- Time --- */
+
+        case "time_5":
+          breedScores["Border Collie"] += 2;
+          breedScores["German Shepherd"] += 1;
+          break;
+
+        case "time_3":
+          breedScores["Golden Retriever"] += 1;
+          break;
+
+        case "time_1":
+          breedScores["French Bulldog"] += 1;
+          break;
+
+        case "time_low":
+          breedScores["Pug"] += 2;
+          break;
+
+        /* --- Family friendliness --- */
+
+        case "family_high":
+          breedScores["Golden Retriever"] += 3;
+          breedScores["Labrador Retriever"] += 3;
+          breedScores["Beagle"] += 1;
+          break;
+
+        case "family_medium":
+          breedScores["Corgi"] += 1;
+          break;
+
+        case "family_low":
+          breedScores["Husky"] += 1;
+          break;
+      }
+    }
+
+    function recalculateScores() {
+      // Reset scores
+      for (let breed in breedScores) {
+        breedScores[breed] = 0;
+      }
+
+      // Re-apply based on selected answers
+      selectedAnswers.forEach(answer => {
+        if (answer) applyScore(answer);
+      });
+    }
+
+    /* ------------------------------------------
+       QUIZ ENGINE (UI)
+    ------------------------------------------ */
+
+    let currentQuestion = 0;
+    let selectedAnswers = [];
+
+    const totalQuestions = dogQuestions.length;
+
+    function updateProgressBar() {
+        const progress = ((currentQuestion) / totalQuestions) * 100;
+        document.getElementById("progress-bar").style.width = progress + "%";
+    }
+
+
+    function loadQuestion() {
+      updateProgressBar();
+      backBtn.classList.toggle("hidden", currentQuestion === 0);
+      backBtn.onclick = () => {
+        if (!resultBox.classList.contains("hidden")) return;
+
+        if (currentQuestion > 0) {
+          currentQuestion--;
+          recalculateScores();
+          loadQuestion();
+        }
+      };
+
+      const q = dogQuestions[currentQuestion];
+      questionText.textContent = q.q;
+      nextBtn.disabled = true;
+
+      optionsBox.innerHTML = "";
+
+      Object.keys(q.options).forEach(option => {
+        const btn = document.createElement("button");
+        btn.textContent = option;
+        btn.className = "option-btn";
+
+        btn.onclick = () => {
+          document.querySelectorAll(".option-btn")
+            .forEach(b => b.classList.remove("selected"));
+
+          btn.classList.add("selected");
+
+          selectedAnswers[currentQuestion] = q.options[option];
+          nextBtn.disabled = false;
+        };
+
+        optionsBox.appendChild(btn);
+      });
+    }
+
+    nextBtn.onclick = () => {
+      // Move to next question
+      currentQuestion++;
+
+      // Recalculate scores based on updated answers
+      recalculateScores();
+
+      // If quiz is not finished → load next question
+      if (currentQuestion < dogQuestions.length) {
+        loadQuestion();
+      } 
+      // If quiz is finished → show results
+      else {
+        finalizeResults();
+      }
+    };
+
+
+    function finalizeResults() {
+      document.getElementById("progress-bar").style.width = "100%";
+
       document.getElementById("question-box").classList.add("hidden");
       nextBtn.classList.add("hidden");
       resultBox.classList.remove("hidden");
-      calculateResult();
+
+      const topBreeds = Object.entries(breedScores)
+        .sort((a, b) => b[1] - a[1])
+        .slice(0, 3)
+        .map(b => b[0]);
+
+      resultText.innerHTML = `
+        <strong>Top Recommendations:</strong><br>
+        • ${topBreeds[0]}<br>
+        • ${topBreeds[1]}<br>
+        • ${topBreeds[2]}
+      `;
     }
-  };
-  // Start quiz
-  loadQuestion();
+
+    loadQuestion();
+
+    document.getElementById("restart-btn").onclick = function() {
+      // Reset everything
+      currentQuestion = 0;
+      selectedAnswers = [];
+
+      // Reset breed scores
+      for (let breed in breedScores) {
+          breedScores[breed] = 0;
+      }
+
+      // Reset UI
+      resultText.innerHTML = ""; // Clear recommendations
+      resultBox.classList.add("hidden"); 
+      nextBtn.classList.remove("hidden");
+      backBtn.classList.add("hidden");
+      document.getElementById("question-box").classList.remove("hidden");
+
+      // Reset progress bar
+      document.getElementById("progress-bar").style.width = "0%";
+
+      // Load first question
+      loadQuestion();
+    };
+
+    });
   </script>
 </body>
 </html>
