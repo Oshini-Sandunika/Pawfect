@@ -151,10 +151,27 @@ body {
 #dog-quiz {
   position: relative;
   padding: 80px 20px 120px;
-
-  background: linear-gradient(135deg, #50361d,  #f3d5b2);
-
+  background: linear-gradient(135deg, #50361d, #f3d5b2);
   overflow: hidden;
+}
+
+/* THE OVERLAY IMAGE */
+#dog-quiz .dog-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+
+  width: 100%;
+  height: 100%;
+
+  background-image: url("/frontend/images/pawprint.png"); /* your transparent PNG */
+  background-repeat: repeat;               /* REPEAT, like tiles */
+  background-size: 500px auto;             /* controls tile size */
+  opacity: 0.15;                            /* same soft watermark look */
+
+  pointer-events: none;  /* click-through */
+  user-select: none;
+  z-index: 1;            /* overlay but behind quiz card */
 }
 
 #dog-quiz::before {
@@ -193,6 +210,9 @@ body {
 
   max-width: 800px;
   margin: 0 auto;
+
+  position: relative;
+  z-index: 2;
 }
 
 /* QUESTION */
@@ -290,6 +310,39 @@ body {
   font-size: 1.4rem;
   font-weight: 600;
 }
+
+.results-row {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin-top: 25px;
+  flex-wrap: wrap;
+}
+
+.breed-card {
+  background: rgba(255, 255, 255, 0.4);
+  padding: 15px;
+  border-radius: 16px;
+  width: 180px;
+  text-align: center;
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.35);
+}
+
+.breed-card img {
+  width: 100%;
+  height: 130px;
+  object-fit: cover;
+  border-radius: 12px;
+}
+
+.breed-card h4 {
+  margin-top: 10px;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #50361d;
+}
+
 
 /* Progress Bar Container */
 #progress-container {

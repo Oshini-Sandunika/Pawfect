@@ -57,7 +57,9 @@
   </div>
 
   <section id="dog-quiz" class="quiz-section">
-    <h2 class="quiz-title">Dog Breed Quiz</h2>
+    <div class="dog-overlay"></div>
+
+    <h2 class="quiz-title">Unlock Your Perfect Pup!</h2>
 
     <div id="dog-quiz-container" class="quiz-card">
       <div id="progress-container">
@@ -74,7 +76,7 @@
 
       <div id="result-box" class="hidden">
         <h3>Your Ideal Dog Type</h3>
-        <p id="dog-result"></p>
+        <div id="dog-results-row" class="results-row"></div>
         <button id="restart-btn" class="quiz-btn">Start Again</button>
       </div>
     </div>
@@ -494,26 +496,49 @@
       }
     };
 
+    const breedImages = {
+      "Labrador Retriever": "/frontend/images/breeds/labradorRetriever,jpg",
+      "Golden Retriever": "/frontend/images/breeds/goldenRetreiver.jpg",
+      "German Shepherd": "/frontend/images/breeds/germanShepherd.jpg",
+      "Border Collie": "/frontend/images/breeds/borderCollie.jpg",
+      "Husky": "/frontend/images/breeds/husky.jpg",
+      "Beagle": "/frontend/images/breeds/beagle.jpg",
+      "French Bulldog": "/frontend/images/breeds/frenchBulldog.jpg",
+      "Pug": "/frontend/images/breeds/pug.jpg",
+      "Shih Tzu": "/frontend/images/breeds/shihTzu.jpg",
+      "Corgi": "/frontend/images/breeds/corgi.jpg"
+    };
 
     function finalizeResults() {
-      document.getElementById("progress-bar").style.width = "100%";
+  document.getElementById("progress-bar").style.width = "100%";
 
-      document.getElementById("question-box").classList.add("hidden");
-      nextBtn.classList.add("hidden");
-      resultBox.classList.remove("hidden");
+  document.getElementById("question-box").classList.add("hidden");
+  nextBtn.classList.add("hidden");
+  backBtn.classList.add("hidden");
+  resultBox.classList.remove("hidden");
 
-      const topBreeds = Object.entries(breedScores)
-        .sort((a, b) => b[1] - a[1])
-        .slice(0, 3)
-        .map(b => b[0]);
+  const resultsRow = document.getElementById("dog-results-row");
 
-      resultText.innerHTML = `
-        <strong>Top Recommendations:</strong><br>
-        • ${topBreeds[0]}<br>
-        • ${topBreeds[1]}<br>
-        • ${topBreeds[2]}
-      `;
-    }
+  const topBreeds = Object.entries(breedScores)
+    .sort((a, b) => b[1] - a[1])
+    .slice(0, 3)
+    .map(b => b[0]);
+
+  resultsRow.innerHTML = "";
+
+  topBreeds.forEach(breed => {
+    const card = document.createElement("div");
+    card.classList.add("breed-card");
+
+    card.innerHTML = `
+      <img src="${breedImages[breed]}" alt="${breed}">
+      <h4>${breed}</h4>
+    `;
+
+    resultsRow.appendChild(card);
+  });
+}
+
 
     loadQuestion();
 
