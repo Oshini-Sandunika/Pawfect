@@ -442,6 +442,7 @@
 
 
     function loadQuestion() {
+      resultBox.classList.add("hidden");
       updateProgressBar();
       backBtn.classList.toggle("hidden", currentQuestion === 0);
       backBtn.onclick = () => {
@@ -497,8 +498,8 @@
     };
 
     const breedImages = {
-      "Labrador Retriever": "/frontend/images/breeds/labradorRetriever,jpg",
-      "Golden Retriever": "/frontend/images/breeds/goldenRetreiver.jpg",
+      "Labrador Retriever": "/frontend/images/breeds/labradorRetriever.jpg",
+      "Golden Retriever": "/frontend/images/breeds/goldenRetriever.jpg",
       "German Shepherd": "/frontend/images/breeds/germanShepherd.jpg",
       "Border Collie": "/frontend/images/breeds/borderCollie.jpg",
       "Husky": "/frontend/images/breeds/husky.jpg",
@@ -510,40 +511,56 @@
     };
 
     function finalizeResults() {
-  document.getElementById("progress-bar").style.width = "100%";
+      // Progress bar full
+      document.getElementById("progress-bar").style.width = "100%";
 
-  document.getElementById("question-box").classList.add("hidden");
-  nextBtn.classList.add("hidden");
-  backBtn.classList.add("hidden");
-  resultBox.classList.remove("hidden");
+      // Hide the entire question section but keep progress bar visible
+      document.getElementById("question-box").style.display = "none";
 
-  const resultsRow = document.getElementById("dog-results-row");
+      // Hide navigation buttons
+      nextBtn.style.display = "none";
+      backBtn.classList.add("hidden");
 
-  const topBreeds = Object.entries(breedScores)
-    .sort((a, b) => b[1] - a[1])
-    .slice(0, 3)
-    .map(b => b[0]);
+      // Show results
+      resultBox.classList.remove("hidden");
 
-  resultsRow.innerHTML = "";
+      // Smooth scroll to results
+      setTimeout(() => {
+        resultBox.scrollIntoView({
+          behavior: "smooth",
+          block: "start"
+        });
+      }, 200);
 
-  topBreeds.forEach(breed => {
-    const card = document.createElement("div");
-    card.classList.add("breed-card");
+      // Prepare result cards
+      const resultsRow = document.getElementById("dog-results-row");
 
-    card.innerHTML = `
-      <img src="${breedImages[breed]}" alt="${breed}">
-      <h4>${breed}</h4>
-    `;
+      const topBreeds = Object.entries(breedScores)
+        .sort((a, b) => b[1] - a[1])
+        .slice(0, 3)
+        .map(b => b[0]);
 
-    resultsRow.appendChild(card);
-  });
-}
+      resultsRow.innerHTML = "";
 
+      topBreeds.forEach(breed => {
+        const card = document.createElement("div");
+        card.classList.add("breed-card");
+
+        card.innerHTML = `
+          <img src="${breedImages[breed]}" alt="${breed}">
+          <h4>${breed}</h4>
+        `;
+
+        resultsRow.appendChild(card);
+      });
+    }
 
     loadQuestion();
 
-    document.getElementById("restart-btn").onclick = function() {
-      // Reset everything
+    document.getElementById("restart-btn").onclick = function () {
+      // Hide results immediately
+      resultBox.classList.add("hidden");
+
       currentQuestion = 0;
       selectedAnswers = [];
 
@@ -552,17 +569,28 @@
           breedScores[breed] = 0;
       }
 
-      // Reset UI
-      resultText.innerHTML = ""; // Clear recommendations
-      resultBox.classList.add("hidden"); 
-      nextBtn.classList.remove("hidden");
+      // Clear previous results
+      document.getElementById("dog-results-row").innerHTML = "";
+
+      // Show question box again
+      document.getElementById("question-box").style.display = "block";
+
+      // Show next button again
+      nextBtn.style.display = "block";
+
+      // Hide back button until question > 0
       backBtn.classList.add("hidden");
-      document.getElementById("question-box").classList.remove("hidden");
 
       // Reset progress bar
       document.getElementById("progress-bar").style.width = "0%";
 
-      // Load first question
+      // Scroll back to quiz top
+      document.getElementById("dog-quiz").scrollIntoView({
+        behavior: "smooth",
+        block: "start"
+      });
+
+      // Load question 1
       loadQuestion();
     };
 
