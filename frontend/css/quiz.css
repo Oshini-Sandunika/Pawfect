@@ -153,6 +153,7 @@ body {
   padding: 80px 20px 120px;
   background: linear-gradient(135deg, #50361d, #f3d5b2);
   overflow: hidden;
+  display: none;
 }
 
 /* THE OVERLAY IMAGE */
@@ -205,7 +206,6 @@ body {
   border-radius: 24px;
   padding: 40px;
 
-  border: 1px solid rgba(255, 255, 255, 0.28);
   box-shadow: 0 10px 30px rgba(0,0,0,0.25);
 
   max-width: 800px;
@@ -233,8 +233,7 @@ body {
 .option-btn {
   padding: 18px 16px;
   background: rgba(255, 245, 230, 0.35);
-  border: 1px solid rgba(255, 255, 255, 0.38);
-
+  border: 1px solid rgba(255, 245, 230, 0.35);
   font-size: 1.1rem;
   border-radius: 16px;
   cursor: pointer;
@@ -293,9 +292,9 @@ body {
   padding: 25px;
 
   text-align: center;
-  background: rgba(255, 245, 230, 0.22);
+  background: none;
   border-radius: 22px;
-  border: 1px solid rgba(255, 255, 255, 0.25);
+  border: none;
 
   animation: fadeIn 0.6s ease;
   color: #fff7e8;
@@ -350,17 +349,36 @@ body {
   height: 12px;
   background: rgba(255,255,255,0.25);
   border-radius: 10px;
-  overflow: hidden;
+  overflow: visible; /* allow paw to sit slightly above */
   margin-bottom: 20px;
+  position: relative; /* important */
 }
 
-/* Progress Bar Fill */
 #progress-bar {
   height: 100%;
   width: 0%;
-  background: linear-gradient(90deg, #d9a066, #b37a40);
+  border-radius: 10px;
+  background: linear-gradient(90deg, #795837, #5e3f20);
   transition: width 0.3s ease;
 }
+
+/* Paw icon – positioned relative to progress container */
+#progress-paw {
+  position: absolute;
+  top: -15px;              /* lift vertically so it's centered above bar */
+  left: 0%;                /* start exactly at the beginning */
+  transform: translateX(-14px);
+  width: 40px;
+  height: 40px;
+
+  background-image: url("/frontend/images/paw.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+
+  transition: left 0.3s ease;
+  pointer-events: none;
+}
+
 
 /* Restart Button */
 #restart-btn {
@@ -394,6 +412,241 @@ body {
 .hidden {
   display: none !important;
 }
+
+/* ------------------------------------------
+   CAT QUIZ — SAME STYLING AS DOG QUIZ
+------------------------------------------- */
+
+/* CAT QUIZ SECTION BACKGROUND */
+#cat-quiz {
+  position: relative;
+  padding: 80px 20px 120px;
+  background: linear-gradient(135deg, #50361d, #f3d5b2);
+  overflow: hidden;
+  display: none; /* hidden until clicked */
+}
+
+/* Reuse the same watermark overlay */
+#cat-quiz .dog-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+
+  width: 100%;
+  height: 100%;
+
+  background-image: url("/frontend/images/pawprint.png");
+  background-repeat: repeat;
+  background-size: 500px auto;
+  opacity: 0.15;
+
+  pointer-events: none;
+  user-select: none;
+  z-index: 1;
+}
+
+#cat-quiz::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.15);
+  z-index: 0;
+}
+
+#cat-quiz > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* CAT QUIZ TITLE */
+#cat-quiz .quiz-title {
+  text-align: center;
+  font-size: 3rem;
+  font-weight: 800;
+  margin-bottom: 40px;
+
+  color: #fff7e8;
+  text-shadow: 0 2px 8px rgba(0,0,0,0.35);
+}
+
+/* CAT QUIZ CONTAINER */
+#cat-quiz .quiz-card {
+  background: rgba(255, 245, 230, 0.18);
+  backdrop-filter: blur(12px);
+  border-radius: 24px;
+  padding: 40px;
+
+  box-shadow: 0 10px 30px rgba(0,0,0,0.25);
+
+  max-width: 800px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 2;
+}
+
+/* CAT QUESTIONS */
+#cat-question-text {
+  font-size: 1.7rem;
+  font-weight: 700;
+  margin-bottom: 30px;
+  color: #fffaf2;
+}
+
+/* OPTIONS GRID */
+#cat-options {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+#cat-options .option-btn {
+  padding: 18px 16px;
+  background: rgba(255, 245, 230, 0.35);
+  border: 1px solid rgba(255, 245, 230, 0.35);
+  font-size: 1.1rem;
+  border-radius: 16px;
+  cursor: pointer;
+
+  color: #866a50;
+  font-weight: 600;
+
+  text-align: center;
+  transition: 0.25s ease;
+}
+
+#cat-options .option-btn:hover {
+  background: rgba(255, 245, 230, 0.55);
+  transform: translateY(-2px);
+}
+
+#cat-options .option-btn.selected {
+  background: #b77b45;
+  border-color: #b77b45;
+  color: white;
+  transform: scale(1.04);
+}
+
+/* CAT NEXT / BACK BUTTONS */
+#cat-next-btn,
+#cat-back-btn,
+#cat-restart-btn {
+  margin-top: 30px;
+  padding: 16px;
+  width: 100%;
+
+  background: linear-gradient(135deg, #a66a3d, #774c28);
+  color: white;
+
+  border: none;
+  border-radius: 16px;
+  font-size: 1.2rem;
+  font-weight: 700;
+
+  cursor: pointer;
+  transition: 0.25s;
+}
+
+#cat-next-btn:hover:not(:disabled),
+#cat-back-btn:hover:not(:disabled),
+#cat-restart-btn:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(32, 20, 8, 0.3);
+}
+
+#cat-next-btn:disabled {
+  background: rgba(255, 255, 255, 0.35);
+  cursor: not-allowed;
+}
+
+/* CAT BACK BUTTON (secondary style) */
+#cat-back-btn {
+  background: rgba(255,255,255,0.25);
+  border: 1px solid rgba(255,255,255,0.4);
+  margin-top: 10px;
+}
+
+#cat-back-btn:hover {
+  background: rgba(255,255,255,0.35);
+}
+
+/* CAT RESULTS */
+#cat-result-box {
+  margin-top: 30px;
+  padding: 25px;
+
+  text-align: center;
+  background: none;
+  border-radius: 22px;
+  border: none;
+
+  animation: fadeIn 0.6s ease;
+  color: #fff7e8;
+}
+
+#cat-result-box h3 {
+  font-size: 1.8rem;
+  margin-bottom: 12px;
+}
+
+#cat-results-row .breed-card {
+  background: rgba(255, 255, 255, 0.4);
+  padding: 15px;
+  border-radius: 16px;
+  width: 180px;
+  text-align: center;
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.35);
+}
+
+#cat-results-row .breed-card img {
+  width: 100%;
+  height: 130px;
+  object-fit: cover;
+  border-radius: 12px;
+}
+
+#cat-results-row .breed-card h4 {
+  margin-top: 10px;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #50361d;
+}
+
+/* CAT PROGRESS BAR */
+#cat-progress-container {
+  width: 100%;
+  height: 12px;
+  background: rgba(255,255,255,0.25);
+  border-radius: 10px;
+  overflow: visible;
+  margin-bottom: 20px;
+  position: relative;
+}
+
+#cat-progress-bar {
+  height: 100%;
+  width: 0%;
+  border-radius: 10px;
+  background: linear-gradient(90deg, #795837, #5e3f20);
+  transition: width 0.3s ease;
+}
+
+#cat-progress-paw {
+  position: absolute;
+  top: -15px;
+  left: 0%;
+  transform: translateX(-14px);
+  width: 40px;
+  height: 40px;
+
+  background-image: url("/frontend/images/paw.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+
+  transition: left 0.3s ease;
+  pointer-events: none;
+}
+
 
 
 
