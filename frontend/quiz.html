@@ -58,6 +58,9 @@
 
   <section id="dog-quiz" class="quiz-section">
     <div class="dog-overlay"></div>
+    <div id="dog-back-to-start" class="floating-back-arrow">
+        ↑
+    </div>
 
     <h2 class="quiz-title">Unlock Your Perfect Pup!</h2>
 
@@ -81,12 +84,17 @@
         <button id="restart-btn" class="quiz-btn">Start Again</button>
       </div>
     </div>
+
   </section>
 
 
 
   <section id="cat-quiz" class="quiz-section" style="display:none;">
     <div class="dog-overlay"></div>
+
+    <div id="cat-back-to-start" class="floating-back-arrow">
+        ↑
+    </div>
 
     <h2 class="quiz-title">Find Your Purrfect Match!</h2>
 
@@ -112,6 +120,7 @@
       </div>
 
     </div>
+    
   </section>
 
 
@@ -564,12 +573,8 @@
         resultBox.classList.remove("hidden");
 
         // Smooth scroll to results
-        setTimeout(() => {
-          resultBox.scrollIntoView({
-            behavior: "smooth",
-            block: "start"
-          });
-        }, 200);
+        document.getElementById("dog-quiz").scrollTop = 0;
+
 
         // Prepare result cards
         const resultsRow = document.getElementById("dog-results-row");
@@ -632,32 +637,6 @@
         // Load question 1
         loadQuestion();
       };
-
-      document.querySelector('a[href="#dog-quiz"]').addEventListener("click", function (e) {
-        e.preventDefault(); // Stop default jump
-        // Show dog quiz
-        document.getElementById("dog-quiz").style.display = "block";
-        // Smooth scroll to it
-        document.getElementById("dog-quiz").scrollIntoView({
-            behavior: "smooth"
-        });
-        // Start quiz at question 1
-        loadQuestion();
-      });
-
-      document.querySelector('a[href="#cat-quiz"]').addEventListener("click", function (e) {
-        e.preventDefault();
-
-        document.getElementById("cat-quiz").style.display = "block";
-
-        document.getElementById("cat-quiz").scrollIntoView({
-            behavior: "smooth"
-        });
-
-        catCurrent = 0;
-        catAnswers = [];
-        loadCatQuestion();
-      });
 
 
       /* ------------------------------------------
@@ -909,14 +888,19 @@
 
       /* NEXT */
       document.getElementById("cat-next-btn").onclick = function () {
-        catCurrent++;
+          catCurrent++;
 
-        if (catCurrent < totalCatQ) {
-          loadCatQuestion();
-        } else {
-          finalizeCatResults();
-        }
+          if (catCurrent < totalCatQ) {
+              loadCatQuestion();
+          } else {
+              // FIX: make progress bar full before showing results
+              document.getElementById("cat-progress-bar").style.width = "100%";
+              document.getElementById("cat-progress-paw").style.left = "100%";
+
+              finalizeCatResults();
+          }
       };
+
 
       /* BACK */
       document.getElementById("cat-back-btn").onclick = function () {
@@ -979,8 +963,78 @@
         loadCatQuestion();
       };
 
+      // ------- SECTION NAVIGATION -------- //
+
+      const landingSection = document.querySelector(".page");
+      const dogQuiz = document.getElementById("dog-quiz");
+      const catQuiz = document.getElementById("cat-quiz");
+
+      // open dog quiz
+      document.querySelector('a[href="#dog-quiz"]').addEventListener("click", function (e) {
+          e.preventDefault();
+
+          slideToSection(dogQuiz, landingSection);
+
+          catQuiz.style.display = "none";
+
+          currentQuestion = 0;
+          loadQuestion();
+      });
+
+
+      // open cat quiz
+      document.querySelector('a[href="#cat-quiz"]').addEventListener("click", function (e) {
+          e.preventDefault();
+
+          slideToSection(catQuiz, landingSection);
+
+          dogQuiz.style.display = "none";
+
+          catCurrent = 0;
+          catAnswers = [];
+          loadCatQuestion();
+      });
+
+
+      function slideToSection(show, hide) {
+        hide.style.transition = "transform 0.6s ease, opacity 0.6s ease";
+        show.style.transition = "transform 0.6s ease, opacity 0.6s ease";
+
+        // slide hide section UP & fade out
+        hide.style.transform = "translateY(-40px)";
+        hide.style.opacity = "0";
+
+        setTimeout(() => {
+            hide.style.display = "none";
+
+            // reset shown section before animating
+            show.style.display = "block";
+            show.style.transform = "translateY(40px)";
+            show.style.opacity = "0";
+
+            setTimeout(() => {
+                // slide show section DOWN & fade in
+                show.style.transform = "translateY(0)";
+                show.style.opacity = "1";
+            }, 20);
+        }, 450);
+      }
+
+      document.getElementById("dog-back-to-start").onclick = () => {
+          slideToSection(landingSection, dogQuiz);
+      };
+
+      document.getElementById("cat-back-to-start").onclick = () => {
+          slideToSection(landingSection, catQuiz);
+      };
+
+
+    
+
 
     });
+
+    
 
   </script>
 </body>

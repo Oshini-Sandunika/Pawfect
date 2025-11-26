@@ -647,6 +647,48 @@ body {
   pointer-events: none;
 }
 
+/* Floating Back Arrow — fixed top-right */
+.floating-back-arrow {
+  position: fixed !important;   /* override any parent positioning */
+  top: 25px !important;         /* distance from top */
+  right: 25px !important;       /* distance from right */
+
+  width: 55px;
+  height: 55px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  font-size: 26px;
+  font-weight: 900;
+  color: #fffdf5;
+
+  background: rgba(255, 255, 255, 0.28);
+  border: 1px solid rgba(255, 255, 255, 0.48);
+  backdrop-filter: blur(8px);
+  border-radius: 50%;
+
+  cursor: pointer;
+  user-select: none;
+
+  z-index: 999999;
+
+  animation: arrowPulse 1.5s infinite ease-in-out;
+  transition: transform 0.25s ease;
+}
+
+.floating-back-arrow:hover {
+  transform: translateY(-4px) scale(1.08);
+}
+
+@keyframes arrowPulse {
+  0% { box-shadow: 0 0 0 rgba(255,255,255,0); }
+  50% { box-shadow: 0 0 18px rgba(255,255,255,0.55); }
+  100% { box-shadow: 0 0 0 rgba(255,255,255,0); }
+}
+
+
+
 
 
 
