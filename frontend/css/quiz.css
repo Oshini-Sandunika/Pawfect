@@ -4,10 +4,13 @@
   padding: 0;
 }
 
+html {
+  scroll-behavior: smooth;
+}
 
 body {
   font-family: 'Nunito', sans-serif;
-  background: #f5eee6;          
+  background: #f3d5b2;          
   color: #4b3829;               
 }
 
@@ -37,7 +40,7 @@ body {
 }
 
 .header h1 {
-  font-size: 1.9rem;
+  font-size: 2.5rem;
   margin-bottom: 6px;
 }
 
@@ -132,3 +135,561 @@ body {
     height: 150px;
   }
 }
+
+.container {
+  background: rgba(255, 255, 255, 0.726);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border-radius: 20px;
+  padding: 40px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+}
+
+/* SECTION BACKGROUND */
+#dog-quiz {
+  position: relative;
+  padding: 80px 20px 120px;
+  background: linear-gradient(135deg, #50361d, #f3d5b2);
+  overflow: hidden;
+  display: none;
+}
+
+/* THE OVERLAY IMAGE */
+#dog-quiz .dog-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+
+  width: 100%;
+  height: 100%;
+
+  background-image: url("/frontend/images/pawprint.png"); /* your transparent PNG */
+  background-repeat: repeat;               /* REPEAT, like tiles */
+  background-size: 500px auto;             /* controls tile size */
+  opacity: 0.15;                            /* same soft watermark look */
+
+  pointer-events: none;  /* click-through */
+  user-select: none;
+  z-index: 1;            /* overlay but behind quiz card */
+}
+
+#dog-quiz::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.15);
+  z-index: 0;
+}
+
+#dog-quiz > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* TITLE */
+.quiz-title {
+  text-align: center;
+  font-size: 3rem;
+  font-weight: 800;
+  margin-bottom: 40px;
+
+  color: #fff7e8;
+  text-shadow: 0 2px 8px rgba(0,0,0,0.35);
+}
+
+/* QUIZ CARD */
+.quiz-card {
+  background: rgba(255, 245, 230, 0.18);
+  backdrop-filter: blur(12px);
+  border-radius: 24px;
+  padding: 40px;
+
+  box-shadow: 0 10px 30px rgba(0,0,0,0.25);
+
+  max-width: 800px;
+  margin: 0 auto;
+
+  position: relative;
+  z-index: 2;
+}
+
+/* QUESTION */
+#question-text {
+  font-size: 1.7rem;
+  font-weight: 700;
+  margin-bottom: 30px;
+  color: #fffaf2;
+}
+
+/* 2 BY 2 ANSWERS GRID */
+#options {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.option-btn {
+  padding: 18px 16px;
+  background: rgba(255, 245, 230, 0.35);
+  border: 1px solid rgba(255, 245, 230, 0.35);
+  font-size: 1.1rem;
+  border-radius: 16px;
+  cursor: pointer;
+
+  color: #866a50;
+  font-weight: 600;
+
+  text-align: center;
+  transition: 0.25s ease;
+}
+
+.option-btn:hover {
+  background: rgba(255, 245, 230, 0.55);
+  transform: translateY(-2px);
+}
+
+/* SELECTED STATE → warm brown */
+.option-btn.selected {
+  background: #b77b45;
+  border-color: #b77b45;
+  color: white;
+  transform: scale(1.04);
+}
+
+/* NEXT BUTTON */
+.quiz-btn {
+  margin-top: 30px;
+  padding: 16px;
+  width: 100%;
+
+  background: linear-gradient(135deg, #a66a3d, #774c28);
+  color: white;
+
+  border: none;
+  border-radius: 16px;
+  font-size: 1.2rem;
+  font-weight: 700;
+
+  cursor: pointer;
+  transition: 0.25s;
+}
+
+.quiz-btn:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(32, 20, 8, 0.3);
+}
+
+.quiz-btn:disabled {
+  background: rgba(255, 255, 255, 0.35);
+  cursor: not-allowed;
+}
+
+/* RESULT BOX */
+#result-box {
+  margin-top: 30px;
+  padding: 25px;
+
+  text-align: center;
+  background: none;
+  border-radius: 22px;
+  border: none;
+
+  animation: fadeIn 0.6s ease;
+  color: #fff7e8;
+}
+
+#result-box h3 {
+  font-size: 1.8rem;
+  margin-bottom: 12px;
+}
+
+#dog-result {
+  font-size: 1.4rem;
+  font-weight: 600;
+}
+
+.results-row {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin-top: 25px;
+  flex-wrap: wrap;
+}
+
+.breed-card {
+  background: rgba(255, 255, 255, 0.4);
+  padding: 15px;
+  border-radius: 16px;
+  width: 180px;
+  text-align: center;
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.35);
+}
+
+.breed-card img {
+  width: 100%;
+  height: 130px;
+  object-fit: cover;
+  border-radius: 12px;
+}
+
+.breed-card h4 {
+  margin-top: 10px;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #50361d;
+}
+
+
+/* Progress Bar Container */
+#progress-container {
+  width: 100%;
+  height: 12px;
+  background: rgba(255,255,255,0.25);
+  border-radius: 10px;
+  overflow: visible; /* allow paw to sit slightly above */
+  margin-bottom: 20px;
+  position: relative; /* important */
+}
+
+#progress-bar {
+  height: 100%;
+  width: 0%;
+  border-radius: 10px;
+  background: linear-gradient(90deg, #795837, #5e3f20);
+  transition: width 0.3s ease;
+}
+
+/* Paw icon – positioned relative to progress container */
+#progress-paw {
+  position: absolute;
+  top: -15px;              /* lift vertically so it's centered above bar */
+  left: 0%;                /* start exactly at the beginning */
+  transform: translateX(-14px);
+  width: 40px;
+  height: 40px;
+
+  background-image: url("/frontend/images/paw.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+
+  transition: left 0.3s ease;
+  pointer-events: none;
+}
+
+
+/* Restart Button */
+#restart-btn {
+  margin-top: 20px;
+  background: linear-gradient(135deg, #c4935c, #8b5e34);
+  color: white;
+  padding: 14px;
+  border: none;
+  border-radius: 14px;
+  cursor: pointer;
+  width: 100%;
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+#restart-btn:hover {
+  transform: scale(1.02);
+  box-shadow: 0px 6px 20px rgba(0,0,0,0.25);
+}
+
+.secondary-btn {
+  background: rgba(255,255,255,0.25);
+  border: 1px solid rgba(255,255,255,0.4);
+  margin-top: 10px;
+}
+
+.secondary-btn:hover {
+  background: rgba(255,255,255,0.35);
+}
+
+.hidden {
+  display: none !important;
+}
+
+/* ------------------------------------------
+   CAT QUIZ — SAME STYLING AS DOG QUIZ
+------------------------------------------- */
+
+/* CAT QUIZ SECTION BACKGROUND */
+#cat-quiz {
+  position: relative;
+  padding: 80px 20px 120px;
+  background: linear-gradient(135deg, #50361d, #f3d5b2);
+  overflow: hidden;
+  display: none; /* hidden until clicked */
+}
+
+/* Reuse the same watermark overlay */
+#cat-quiz .dog-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+
+  width: 100%;
+  height: 100%;
+
+  background-image: url("/frontend/images/pawprint.png");
+  background-repeat: repeat;
+  background-size: 500px auto;
+  opacity: 0.15;
+
+  pointer-events: none;
+  user-select: none;
+  z-index: 1;
+}
+
+#cat-quiz::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.15);
+  z-index: 0;
+}
+
+#cat-quiz > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* CAT QUIZ TITLE */
+#cat-quiz .quiz-title {
+  text-align: center;
+  font-size: 3rem;
+  font-weight: 800;
+  margin-bottom: 40px;
+
+  color: #fff7e8;
+  text-shadow: 0 2px 8px rgba(0,0,0,0.35);
+}
+
+/* CAT QUIZ CONTAINER */
+#cat-quiz .quiz-card {
+  background: rgba(255, 245, 230, 0.18);
+  backdrop-filter: blur(12px);
+  border-radius: 24px;
+  padding: 40px;
+
+  box-shadow: 0 10px 30px rgba(0,0,0,0.25);
+
+  max-width: 800px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 2;
+}
+
+/* CAT QUESTIONS */
+#cat-question-text {
+  font-size: 1.7rem;
+  font-weight: 700;
+  margin-bottom: 30px;
+  color: #fffaf2;
+}
+
+/* OPTIONS GRID */
+#cat-options {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+#cat-options .option-btn {
+  padding: 18px 16px;
+  background: rgba(255, 245, 230, 0.35);
+  border: 1px solid rgba(255, 245, 230, 0.35);
+  font-size: 1.1rem;
+  border-radius: 16px;
+  cursor: pointer;
+
+  color: #866a50;
+  font-weight: 600;
+
+  text-align: center;
+  transition: 0.25s ease;
+}
+
+#cat-options .option-btn:hover {
+  background: rgba(255, 245, 230, 0.55);
+  transform: translateY(-2px);
+}
+
+#cat-options .option-btn.selected {
+  background: #b77b45;
+  border-color: #b77b45;
+  color: white;
+  transform: scale(1.04);
+}
+
+/* CAT NEXT / BACK BUTTONS */
+#cat-next-btn,
+#cat-back-btn,
+#cat-restart-btn {
+  margin-top: 30px;
+  padding: 16px;
+  width: 100%;
+
+  background: linear-gradient(135deg, #a66a3d, #774c28);
+  color: white;
+
+  border: none;
+  border-radius: 16px;
+  font-size: 1.2rem;
+  font-weight: 700;
+
+  cursor: pointer;
+  transition: 0.25s;
+}
+
+#cat-next-btn:hover:not(:disabled),
+#cat-back-btn:hover:not(:disabled),
+#cat-restart-btn:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(32, 20, 8, 0.3);
+}
+
+#cat-next-btn:disabled {
+  background: rgba(255, 255, 255, 0.35);
+  cursor: not-allowed;
+}
+
+/* CAT BACK BUTTON (secondary style) */
+#cat-back-btn {
+  background: rgba(255,255,255,0.25);
+  border: 1px solid rgba(255,255,255,0.4);
+  margin-top: 10px;
+}
+
+#cat-back-btn:hover {
+  background: rgba(255,255,255,0.35);
+}
+
+/* CAT RESULTS */
+#cat-result-box {
+  margin-top: 30px;
+  padding: 25px;
+
+  text-align: center;
+  background: none;
+  border-radius: 22px;
+  border: none;
+
+  animation: fadeIn 0.6s ease;
+  color: #fff7e8;
+}
+
+#cat-result-box h3 {
+  font-size: 1.8rem;
+  margin-bottom: 12px;
+}
+
+#cat-results-row .breed-card {
+  background: rgba(255, 255, 255, 0.4);
+  padding: 15px;
+  border-radius: 16px;
+  width: 180px;
+  text-align: center;
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.35);
+}
+
+#cat-results-row .breed-card img {
+  width: 100%;
+  height: 130px;
+  object-fit: cover;
+  border-radius: 12px;
+}
+
+#cat-results-row .breed-card h4 {
+  margin-top: 10px;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #50361d;
+}
+
+/* CAT PROGRESS BAR */
+#cat-progress-container {
+  width: 100%;
+  height: 12px;
+  background: rgba(255,255,255,0.25);
+  border-radius: 10px;
+  overflow: visible;
+  margin-bottom: 20px;
+  position: relative;
+}
+
+#cat-progress-bar {
+  height: 100%;
+  width: 0%;
+  border-radius: 10px;
+  background: linear-gradient(90deg, #795837, #5e3f20);
+  transition: width 0.3s ease;
+}
+
+#cat-progress-paw {
+  position: absolute;
+  top: -15px;
+  left: 0%;
+  transform: translateX(-14px);
+  width: 40px;
+  height: 40px;
+
+  background-image: url("/frontend/images/paw.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+
+  transition: left 0.3s ease;
+  pointer-events: none;
+}
+
+/* Floating Back Arrow — fixed top-right */
+.floating-back-arrow {
+  position: fixed !important;   /* override any parent positioning */
+  top: 25px !important;         /* distance from top */
+  right: 25px !important;       /* distance from right */
+
+  width: 55px;
+  height: 55px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  font-size: 26px;
+  font-weight: 900;
+  color: #fffdf5;
+
+  background: rgba(255, 255, 255, 0.28);
+  border: 1px solid rgba(255, 255, 255, 0.48);
+  backdrop-filter: blur(8px);
+  border-radius: 50%;
+
+  cursor: pointer;
+  user-select: none;
+
+  z-index: 999999;
+
+  animation: arrowPulse 1.5s infinite ease-in-out;
+  transition: transform 0.25s ease;
+}
+
+.floating-back-arrow:hover {
+  transform: translateY(-4px) scale(1.08);
+}
+
+@keyframes arrowPulse {
+  0% { box-shadow: 0 0 0 rgba(255,255,255,0); }
+  50% { box-shadow: 0 0 18px rgba(255,255,255,0.55); }
+  100% { box-shadow: 0 0 0 rgba(255,255,255,0); }
+}
+
+
+
+
+
+
+
