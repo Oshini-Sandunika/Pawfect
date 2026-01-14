@@ -1,0 +1,236 @@
+/* --- GLOBAL VARIABLES (Beige & Brown Theme) --- */
+:root {
+    --bg-beige: #F9F7F2;      /* Main Background */
+    --card-bg: #FFFFFF;       /* Card Background */
+    --primary-brown: #5D4037; /* Headers & Navbar */
+    --secondary-brown: #8D6E63; /* Buttons */
+    --accent-tan: #D7CCC8;    /* Hover effects */
+    --text-dark: #3E2723;     /* Main text */
+    --text-light: #F9F7F2;    /* Text on dark buttons */
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: var(--bg-beige);
+    color: var(--text-dark);
+}
+
+/* --- NAVBAR (Consistent with your existing styles) --- */
+.navbar {
+    background-color: var(--primary-brown);
+    color: var(--text-light);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+}
+
+.navbar h1 { margin: 0; font-size: 1.5rem; }
+
+.navbar nav a {
+    color: var(--text-light);
+    text-decoration: none;
+    margin-left: 1.5rem;
+    font-weight: 500;
+    transition: color 0.3s;
+}
+
+.navbar nav a:hover, .navbar nav a.active {
+    color: var(--accent-tan);
+    text-decoration: underline;
+}
+
+/* --- HERO & FILTERS --- */
+.adopt-hero {
+    text-align: center;
+    padding: 2rem 1rem;
+    background-color: #efebe9; /* Slightly darker beige for contrast */
+}
+
+.adopt-hero h2 {
+    color: var(--primary-brown);
+    margin-bottom: 0.5rem;
+}
+
+.filter-container {
+    margin-top: 1.5rem;
+}
+
+.filter-btn {
+    background-color: transparent;
+    border: 2px solid var(--secondary-brown);
+    color: var(--secondary-brown);
+    padding: 8px 20px;
+    margin: 0 5px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: all 0.3s ease;
+}
+
+.filter-btn:hover, .filter-btn.active {
+    background-color: var(--secondary-brown);
+    color: var(--text-light);
+}
+
+/* --- GALLERY GRID --- */
+.gallery-section {
+    padding: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.pet-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 2rem;
+}
+
+/* --- PET CARDS --- */
+.pet-card {
+    background-color: var(--card-bg);
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 10px rgba(93, 64, 55, 0.15); /* Brownish shadow */
+    transition: transform 0.3s ease;
+    text-align: center;
+    padding-bottom: 1.5rem;
+}
+
+.pet-card:hover {
+    transform: translateY(-5px);
+}
+
+.pet-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    background-color: #ddd;
+}
+
+.pet-card h3 {
+    color: var(--primary-brown);
+    margin: 1rem 0 0.5rem 0;
+}
+
+.pet-card p {
+    color: #666;
+    margin: 0 0 1rem 0;
+    font-size: 0.9rem;
+}
+
+.details-btn {
+    background-color: var(--primary-brown);
+    color: var(--text-light);
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 0.9rem;
+}
+
+.details-btn:hover {
+    background-color: #3E2723;
+}
+
+/* --- FOOTER --- */
+footer {
+    background-color: var(--primary-brown);
+    color: var(--text-light);
+    text-align: center;
+    padding: 1rem;
+    margin-top: 2rem;
+}
+
+/* --- MODAL (POPUP) --- */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(62, 39, 35, 0.7); /* Dark brown overlay */
+    justify-content: center;
+    align-items: center;
+}
+
+.modal.show {
+    display: flex;
+}
+
+.modal-content {
+    background-color: #fff;
+    margin: auto;
+    padding: 20px;
+    border-radius: 10px;
+    width: 90%;
+    max-width: 600px;
+    position: relative;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+}
+
+.close-btn {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+    position: absolute;
+    right: 20px;
+    top: 10px;
+}
+
+.close-btn:hover { color: #000; }
+
+.modal-body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.modal-body img {
+    width: 100%;
+    max-height: 300px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-bottom: 15px;
+}
+
+.modal-info h3 { color: var(--primary-brown); font-size: 2rem; margin-bottom: 5px; }
+.species-breed { color: #777; font-style: italic; margin-bottom: 15px; }
+.description { line-height: 1.6; margin-bottom: 20px; color: #444; }
+
+.adopt-btn {
+    display: inline-block;
+    background-color: var(--secondary-brown);
+    color: white;
+    padding: 12px 30px;
+    text-decoration: none;
+    border-radius: 25px;
+    font-weight: bold;
+    transition: background 0.3s;
+}
+
+.adopt-btn:hover { background-color: var(--primary-brown); }
+
+/* Responsive Modal for larger screens */
+@media (min-width: 600px) {
+    .modal-body {
+        flex-direction: row;
+        text-align: left;
+        gap: 20px;
+    }
+    .modal-body img {
+        width: 50%;
+        height: auto;
+    }
+    .modal-info {
+        width: 50%;
+    }
+}
