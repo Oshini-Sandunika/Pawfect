@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pawfect | Tools</title>
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        .tools-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            padding: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .tool-card {
+            background: var(--card-bg);
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 10px rgba(93, 64, 55, 0.1);
+            text-align: center;
+            border-top: 5px solid var(--secondary-brown);
+            transition: transform 0.2s;
+        }
+
+        .tool-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .tool-card h3 {
+            color: var(--primary-brown);
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .tool-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            display: block;
+        }
+    </style>
+</head>
+<body>
+
+    <header class="navbar">
+        <h1>🐾 Pawfect</h1>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="adopt.html">Adopt</a>
+            <a href="tools.html" class="active">Tools</a>
+            <a href="about.html">About</a>
+            <a href="contact.html">Contact</a>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <h2>Pet Ownership Tools</h2>
+        <p>Planning for a new pet? Use our calculators and converters to get ready for your new family member.</p>
+    </section>
+
+    <div class="tools-grid">
+        
+        <div class="tool-card">
+            <span class="tool-icon">💰</span>
+            <h3>Adoption Cost Estimator</h3>
+            <p>Calculate the initial costs of adopting a pet, including vaccinations, supplies, and fees.</p>
+            <br>
+            <button class="cta-btn" onclick="alert('Calculator feature coming soon!')">Launch Calculator</button>
+        </div>
+
+        <div class="tool-card">
+            <span class="tool-icon">📅</span>
+            <h3>Monthly Care Budget</h3>
+            <p>Estimate the ongoing monthly expenses for food, grooming, and insurance.</p>
+            <br>
+            <button class="cta-btn" onclick="alert('Budget feature coming soon!')">Calculate Budget</button>
+        </div>
+
+        <div class="tool-card">
+            <span class="tool-icon">⏳</span>
+            <h3>Human Year Converter</h3>
+            <p>Wondering how old your dog or cat is in human years? Find out here.</p>
+            <br>
+            <button class="cta-btn" onclick="alert('Converter feature coming soon!')">Convert Age</button>
+        </div>
+
+    </div>
+
+    <footer>
+        <p>© 2025 Pawfect Pet Adoption | CIS 3532 – Web Technologies</p>
+    </footer>
+
+</body>
+</html>
