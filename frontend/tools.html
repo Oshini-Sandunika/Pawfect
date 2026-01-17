@@ -1,9 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Google Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+    <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
+
     <title>Pawfect | Tools</title>
+    <link rel="stylesheet" href="css/index.css">
     <link rel="stylesheet" href="css/style.css">
     <style>
         .tools-grid {
@@ -14,7 +23,7 @@
             max-width: 1200px;
             margin: 0 auto;
         }
-        
+
         .tool-card {
             background: var(--card-bg);
             padding: 2rem;
@@ -42,55 +51,99 @@
         }
     </style>
 </head>
-<body>
 
-    <header class="navbar">
-        <h1>🐾 Pawfect</h1>
+<body>
+    <header class="site-header">
         <nav>
-            <a href="index.html">Home</a>
-            <a href="adopt.html">Adopt</a>
-            <a href="tools.html" class="active">Tools</a>
-            <a href="about.html">About</a>
-            <a href="contact.html">Contact</a>
+            <ul class="site-menu">
+                <li>
+                    <a class="nav-item logo" href="/" title="Home">
+                        <img class="logo-image" src="images/favicon.ico" alt="Pawfect Logo">
+                        <div class="site-name">
+                            <h4 class="title">Pawfect</h4>
+                            <span class="tagline">Where paws meet their perfect match</span>
+                        </div>
+                    </a>
+                </li>
+                <li class="nav-item spacer"></li>
+                <li><a class="nav-item" href="adopt.html">Adopt</a></li>
+                <li><a class="nav-item" href="quiz.html">Pet Quiz</a></li>
+                <li><a class="nav-item" href="tools.html">Tools</a></li>
+                <li><a class="nav-item" href="contact.html">Contact Us</a></li>
+            </ul>
         </nav>
     </header>
+    <main>
 
-    <section class="hero">
-        <h2>Pet Ownership Tools</h2>
-        <p>Planning for a new pet? Use our calculators and converters to get ready for your new family member.</p>
-    </section>
+        <section class="hero">
+            <h2>Pet Ownership Tools</h2>
+            <p>Planning for a new pet? Use our calculators and converters to get ready for your new family member.</p>
+        </section>
 
-    <div class="tools-grid">
-        
-        <div class="tool-card">
-            <span class="tool-icon">💰</span>
-            <h3>Adoption Cost Estimator</h3>
-            <p>Calculate the initial costs of adopting a pet, including vaccinations, supplies, and fees.</p>
-            <br>
-            <button class="cta-btn" onclick="alert('Calculator feature coming soon!')">Launch Calculator</button>
+        <div class="tools-grid">
+
+            <div class="tool-card">
+                <span class="tool-icon">💰</span>
+                <h3>Adoption Cost Estimator</h3>
+                <p>Calculate the initial costs of adopting a pet, including vaccinations, supplies, and fees.</p>
+                <br>
+                <button class="cta-btn" onclick="alert('Calculator feature coming soon!')">Launch Calculator</button>
+            </div>
+
+            <div class="tool-card">
+                <span class="tool-icon">📅</span>
+                <h3>Monthly Care Budget</h3>
+                <p>Estimate the ongoing monthly expenses for food, grooming, and insurance.</p>
+                <br>
+                <button class="cta-btn" onclick="alert('Budget feature coming soon!')">Calculate Budget</button>
+            </div>
+
+            <div class="tool-card">
+                <span class="tool-icon">⏳</span>
+                <h3>Human Year Converter</h3>
+                <p>Wondering how old your dog or cat is in human years? Find out here.</p>
+                <br>
+                <button class="cta-btn" onclick="alert('Converter feature coming soon!')">Convert Age</button>
+            </div>
+
+        </div>
+    </main>
+    <footer class="site-footer">
+        <div class="footer-nav">
+            <div class="footer-site-logo">
+                <img class="logo-image" src="images/favicon.ico" alt="Pawfect Logo" width="64px">
+                <h4 class="title">Pawfect</h4>
+                <span class="tagline">Where paws meet their perfect match</span>
+            </div>
+            <div>
+                <h5>Site Links</h5>
+                <ul class="nav-list">
+                    <li class="nav-item"><a href="/">Home</a></li>
+                    <li class="nav-item"><a href="adopt.html">Adopt</a></li>
+                    <li class="nav-item"><a href="tools.html">Tools</a></li>
+                    <li class="nav-item"><a href="quiz.html">Quiz</a></li>
+                    <li class="nav-item"><a href="contact.html">Contact us</a></li>
+                    <li class="nav-item"><a href="about.html">About us</a></li>
+                </ul>
+            </div>
+
+            <div class="social-links">
+                <h5>Follow Us</h5>
+                <a href="#pawfect" target="_blank">
+                    <img src="images/social-logos/fb.svg" alt="Facebook logo" width="20px">
+                </a>
+                <a href="#pawfect" target="_blank">
+                    <img src="images/social-logos/instagram.svg" alt="Instagram logo" width="20px">
+                </a>
+                <a href="#pawfect" target="_blank">
+                    <img src="images/social-logos/twitter.svg" alt="Twitter logo" width="24px">
+                </a>
+            </div>
+
         </div>
 
-        <div class="tool-card">
-            <span class="tool-icon">📅</span>
-            <h3>Monthly Care Budget</h3>
-            <p>Estimate the ongoing monthly expenses for food, grooming, and insurance.</p>
-            <br>
-            <button class="cta-btn" onclick="alert('Budget feature coming soon!')">Calculate Budget</button>
-        </div>
-
-        <div class="tool-card">
-            <span class="tool-icon">⏳</span>
-            <h3>Human Year Converter</h3>
-            <p>Wondering how old your dog or cat is in human years? Find out here.</p>
-            <br>
-            <button class="cta-btn" onclick="alert('Converter feature coming soon!')">Convert Age</button>
-        </div>
-
-    </div>
-
-    <footer>
-        <p>© 2025 Pawfect Pet Adoption | CIS 3532 – Web Technologies</p>
+        <p class="copyright">© 2025 Pawfect Pet Adoption | CIS 3532 - Web Technologies</p>
     </footer>
-
 </body>
+
 </html>
