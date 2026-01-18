@@ -27,6 +27,8 @@
   <header class="site-header">
     <nav>
       <ul class="site-menu">
+        <li class="nav-item mobile-only" onclick="showMenu()" id="menu-btn">
+        </li>
         <li>
           <a class="nav-item logo" href="index.html" title="Home">
             <img class="logo-image" src="images/favicon.ico" alt="Pawfect Logo">
@@ -37,10 +39,10 @@
           </a>
         </li>
         <li class="nav-item spacer"></li>
-        <li><a class="nav-item" href="adopt.html">Adopt</a></li>
-        <li><a class="nav-item" href="quiz.html">Pet Quiz</a></li>
-        <li><a class="nav-item" href="tools.html">Tools</a></li>
-        <li><a class="nav-item" href="contact.html">Contact Us</a></li>
+        <li><a class="nav-item mobile-hide" href="adopt.html">Adopt</a></li>
+        <li><a class="nav-item mobile-hide" href="quiz.html">Pet Quiz</a></li>
+        <li><a class="nav-item mobile-hide" href="tools.html">Tools</a></li>
+        <li><a class="nav-item mobile-hide" href="contact.html#contact">Contact Us</a></li>
         <li class="login-btn" onclick="showLogin()">Login</li>
       </ul>
     </nav>
@@ -1083,8 +1085,8 @@
           <li class="nav-item"><a href="adopt.html">Adopt</a></li>
           <li class="nav-item"><a href="tools.html">Tools</a></li>
           <li class="nav-item"><a href="quiz.html">Quiz</a></li>
-          <li class="nav-item"><a href="contact.html">Contact us</a></li>
-          <li class="nav-item"><a href="about.html">About us</a></li>
+          <li class="nav-item"><a href="contact.html#contact">Contact us</a></li>
+          <li class=" nav-item"><a href="contact.html#about">About us</a></li>
         </ul>
       </div>
 
@@ -1105,7 +1107,7 @@
 
     <p class="copyright">© 2025 Pawfect Pet Adoption | CIS 3532 - Web Technologies</p>
   </footer>
-  <script src="js/login.js"></script>
+  <script src="js/main.js"></script>
 </body>
 
 </html>

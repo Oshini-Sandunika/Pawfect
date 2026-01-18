@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pawfect | Login</title>
+  <link rel="stylesheet" href="../css/style.css">
+  <style>
+    body {
+      /* Uses global variables from style.css */
+      background: var(--bg-beige);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    .login-card {
+      background: var(--card-bg);
+      /* White */
+      color: var(--text-dark);
+      padding: 40px;
+      width: 350px;
+      border-radius: 12px;
+      box-shadow: 0 4px 15px rgba(93, 64, 55, 0.15);
+      /* Brownish shadow */
+      text-align: center;
+      animation: fadeIn 0.8s ease;
+    }
+
+    .login-card h2 {
+      color: var(--primary-brown);
+      margin-bottom: 20px;
+      margin-top: 0;
+    }
+
+    .login-card input {
+      width: 100%;
+      padding: 12px;
+      margin: 10px 0;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      box-sizing: border-box;
+      /* Ensures padding doesn't break width */
+    }
+
+    .login-card input:focus {
+      outline: 2px solid var(--secondary-brown);
+      border-color: transparent;
+    }
+
+    .login-card button {
+      width: 100%;
+      padding: 12px;
+      margin-top: 10px;
+      background: var(--primary-brown);
+      color: var(--text-light);
+      border: none;
+      border-radius: 6px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    .login-card button:hover {
+      background: var(--secondary-brown);
+    }
+
+    .switch-link {
+      display: block;
+      margin-top: 15px;
+      font-size: 0.9rem;
+      color: #666;
+    }
+
+    .switch-link a {
+      color: var(--primary-brown);
+      font-weight: bold;
+      text-decoration: none;
+    }
+
+    .switch-link a:hover {
+      text-decoration: underline;
+    }
+
+    .home-link {
+      display: block;
+      margin-top: 20px;
+      font-size: 0.85rem;
+      color: #999;
+      text-decoration: none;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="login-card">
+    <h2>Welcome Back!</h2>
+    <input type="text" placeholder="Username" />
+    <input type="password" placeholder="Password" />
+    <button onclick="alert('Logged in successfully!')">Login</button>
+
+    <span class="switch-link">
+      New here? <a href="./signup.html">Create an Account</a>
+    </span>
+
+  </div>
+
+</body>
+
+</html>
