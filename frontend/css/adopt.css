@@ -1,65 +1,17 @@
-/* --- GLOBAL VARIABLES (Beige & Brown Theme) --- */
-:root {
-    --bg-beige: #F9F7F2;      /* Main Background */
-    --card-bg: #FFFFFF;       /* Card Background */
-    --primary-brown: #5D4037; /* Headers & Navbar */
-    --secondary-brown: #8D6E63; /* Buttons */
-    --accent-tan: #D7CCC8;    /* Hover effects */
-    --text-dark: #3E2723;     /* Main text */
-    --text-light: #F9F7F2;    /* Text on dark buttons */
-}
-
-body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: var(--bg-beige);
-    color: var(--text-dark);
-}
-
-/* --- NAVBAR (Consistent with your existing styles) --- */
-.navbar {
-    background-color: var(--primary-brown);
-    color: var(--text-light);
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 1rem 2rem;
-}
-
-.navbar h1 { margin: 0; font-size: 1.5rem; }
-
-.navbar nav a {
-    color: var(--text-light);
-    text-decoration: none;
-    margin-left: 1.5rem;
-    font-weight: 500;
-    transition: color 0.3s;
-}
-
-.navbar nav a:hover, .navbar nav a.active {
-    color: var(--accent-tan);
-    text-decoration: underline;
-}
-
-/* --- HERO & FILTERS --- */
-.adopt-hero {
-    text-align: center;
-    padding: 2rem 1rem;
-    background-color: #efebe9; /* Slightly darker beige for contrast */
-}
-
-.adopt-hero h2 {
-    color: var(--primary-brown);
-    margin-bottom: 0.5rem;
+/* --- PET GALLERY GRID --- */
+.gallery-section {
+    padding: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
 .filter-container {
-    margin-top: 1.5rem;
+    text-align: center;
+    margin-bottom: 2rem;
 }
 
 .filter-btn {
-    background-color: transparent;
+    background: transparent;
     border: 2px solid var(--secondary-brown);
     color: var(--secondary-brown);
     padding: 8px 20px;
@@ -67,24 +19,18 @@ body {
     border-radius: 20px;
     cursor: pointer;
     font-weight: bold;
-    transition: all 0.3s ease;
+    transition: 0.3s;
 }
 
-.filter-btn:hover, .filter-btn.active {
-    background-color: var(--secondary-brown);
+.filter-btn:hover,
+.filter-btn.active {
+    background: var(--secondary-brown);
     color: var(--text-light);
-}
-
-/* --- GALLERY GRID --- */
-.gallery-section {
-    padding: 2rem;
-    max-width: 1200px;
-    margin: 0 auto;
 }
 
 .pet-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
     gap: 2rem;
 }
 
@@ -93,10 +39,11 @@ body {
     background-color: var(--card-bg);
     border-radius: 12px;
     overflow: hidden;
-    box-shadow: 0 4px 10px rgba(93, 64, 55, 0.15); /* Brownish shadow */
-    transition: transform 0.3s ease;
+    box-shadow: 0 4px 10px rgba(93, 64, 55, 0.15);
+    /* Brownish shadow */
     text-align: center;
     padding-bottom: 1.5rem;
+    transition: transform 0.3s ease;
 }
 
 .pet-card:hover {
@@ -105,7 +52,7 @@ body {
 
 .pet-card img {
     width: 100%;
-    height: 200px;
+    height: 220px;
     object-fit: cover;
     background-color: #ddd;
 }
@@ -117,120 +64,116 @@ body {
 
 .pet-card p {
     color: #666;
-    margin: 0 0 1rem 0;
+    margin-bottom: 1rem;
     font-size: 0.9rem;
 }
 
 .details-btn {
-    background-color: var(--primary-brown);
+    background-color: var(--btn-color);
     color: var(--text-light);
     border: none;
     padding: 10px 20px;
     border-radius: 5px;
     cursor: pointer;
-    font-size: 0.9rem;
+    font-weight: bold;
 }
 
 .details-btn:hover {
-    background-color: #3E2723;
+    background-color: var(--text-dark);
 }
 
-/* --- FOOTER --- */
-footer {
-    background-color: var(--primary-brown);
+.adopt-btn {
+    display: inline-block;
+    background-color: var(--secondary-brown);
     color: var(--text-light);
+    padding: 12px 30px;
+    border-radius: 25px;
+    text-decoration: none;
+    font-weight: bold;
+    margin-top: 15px;
     text-align: center;
-    padding: 1rem;
-    margin-top: 2rem;
+    transition: background 0.3s;
 }
+
+.adopt-btn:hover {
+    background-color: var(--primary-brown);
+}
+
+
 
 /* --- MODAL (POPUP) --- */
 .modal {
-    display: none; /* Hidden by default */
+    display: none;
     position: fixed;
     z-index: 1000;
     left: 0;
     top: 0;
     width: 100%;
     height: 100%;
-    overflow: auto;
-    background-color: rgba(62, 39, 35, 0.7); /* Dark brown overlay */
+    background-color: rgba(62, 39, 35, 0.7);
+    /* Dark brown overlay */
     justify-content: center;
     align-items: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
 }
 
 .modal.show {
     display: flex;
+    opacity: 1;
 }
 
 .modal-content {
-    background-color: #fff;
-    margin: auto;
+    background-color: var(--card-bg);
     padding: 20px;
-    border-radius: 10px;
+    border-radius: 12px;
     width: 90%;
-    max-width: 600px;
+    max-width: 700px;
     position: relative;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    box-shadow: 0 5px 25px rgba(0, 0, 0, 0.3);
+}
+
+@media (min-width: 700px) {
+    .modal-content {
+        flex-direction: row;
+        text-align: left;
+    }
+
+    .modal-img-container {
+        width: 50%;
+    }
+
+    .modal-info {
+        width: 50%;
+        padding-left: 20px;
+    }
+}
+
+.modal-img-container img {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    border-radius: 8px;
 }
 
 .close-btn {
-    color: #aaa;
-    float: right;
-    font-size: 28px;
-    font-weight: bold;
-    cursor: pointer;
     position: absolute;
-    right: 20px;
     top: 10px;
+    right: 20px;
+    font-size: 30px;
+    cursor: pointer;
+    color: #aaa;
 }
 
-.close-btn:hover { color: #000; }
-
-.modal-body {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
+.close-btn:hover {
+    color: #000;
 }
 
-.modal-body img {
-    width: 100%;
-    max-height: 300px;
-    object-fit: cover;
-    border-radius: 8px;
-    margin-bottom: 15px;
-}
-
-.modal-info h3 { color: var(--primary-brown); font-size: 2rem; margin-bottom: 5px; }
-.species-breed { color: #777; font-style: italic; margin-bottom: 15px; }
-.description { line-height: 1.6; margin-bottom: 20px; color: #444; }
-
-.adopt-btn {
-    display: inline-block;
-    background-color: var(--secondary-brown);
-    color: white;
-    padding: 12px 30px;
-    text-decoration: none;
-    border-radius: 25px;
-    font-weight: bold;
-    transition: background 0.3s;
-}
-
-.adopt-btn:hover { background-color: var(--primary-brown); }
-
-/* Responsive Modal for larger screens */
-@media (min-width: 600px) {
-    .modal-body {
-        flex-direction: row;
-        text-align: left;
-        gap: 20px;
-    }
-    .modal-body img {
-        width: 50%;
-        height: auto;
-    }
-    .modal-info {
-        width: 50%;
-    }
+.modal-info h3 {
+    color: var(--primary-brown);
+    font-size: 2rem;
+    margin-top: 0;
 }

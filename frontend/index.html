@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pawfect - Where paws meet their perfect match</title>
+
+    <!-- Google Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+    <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
+
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/home.css">
+</head>
+
+<body>
+    <header class="site-header">
+        <nav>
+            <ul class="site-menu">
+                <li class="nav-item mobile-only" onclick="showMenu()" id="menu-btn">
+                </li>
+                <li>
+                    <a class="nav-item logo" href="index.html" title="Home">
+                        <img class="logo-image" src="images/favicon.ico" alt="Pawfect Logo">
+                        <div class="site-name">
+                            <h4 class="title">Pawfect</h4>
+                            <span class="tagline">Where paws meet their perfect match</span>
+                        </div>
+                    </a>
+                </li>
+                <li class="nav-item spacer"></li>
+                <li><a class="nav-item mobile-hide" href="adopt.html">Adopt</a></li>
+                <li><a class="nav-item mobile-hide" href="quiz.html">Pet Quiz</a></li>
+                <li><a class="nav-item mobile-hide" href="tools.html">Tools</a></li>
+                <li><a class="nav-item mobile-hide" href="contact.html#about">About</a></li>
+                <li><a class="nav-item mobile-hide" href="contact.html">Contact Us</a></li>
+                <li class="btn login-btn" onclick="showLogin()">Login</li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section id="home-landing">
+            <div id="landing-text">
+                <div id="site-branding">
+                    <img class="logo-image" src="images/favicon.ico" alt="Pawfect Logo">
+                    <h1 class="title">Pawfect</h1>
+                </div>
+                <h2>Find Your New Best Friend</h2>
+                <p>Pawfect connects you with loving pets in need of a home. Browse our gallery, take our compatibility
+                    quiz, or learn more about responsible adoption.</p>
+                <a href="adopt.html" class="btn cta-btn">Browse Pets</a>
+            </div>
+            <div id="landing-image">
+                <img src="images/home/landing-01.webp" alt="Dog and cat">
+            </div>
+        </section>
+        <section id="pet-quiz">
+            <div class="card">
+                <img src="images/home/quiz-dog.webp" alt="dog">
+                <div class="card-body">
+                    <h2 class="card-title">Not sure which pet is right for you?</h2>
+                    <div class="card-content">
+                        <p>Take our quick and fun pet compatibility quiz to find your perfect match!</p>
+                        <a href="quiz.html" class="btn quiz-btn">Take the Quiz</a>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+        <section id="home-about">
+            <h2>About Pawfect</h2>
+            <p>
+                Pawfect is a community-based pet adoption platform designed to support
+                local shelters and guide adopters through responsible pet ownership.
+                Our goal is to provide clarity, care guidance, and confidence to adopters.
+            </p>
+            <a href="contact.html" class="btn about-btn">Learn More</a>
+        </section>
+    </main>
+
+    <script>
+        const landingImage = document.querySelector('#landing-image img');
+        const images = ['images/home/landing-01.webp', 'images/home/landing-02.webp', 'images/home/landing-03.webp'];
+        let currentIndex = 0;
+        setInterval(() => {
+            currentIndex = (currentIndex + 1) % images.length;
+            landingImage.src = images[currentIndex];
+        }, 5000);
+    </script>
+
+    <footer class="site-footer">
+        <div class="footer-nav">
+            <div class="footer-site-logo">
+                <img class="logo-image" src="images/favicon.ico" alt="Pawfect Logo" width="64px">
+                <h4 class="title">Pawfect</h4>
+                <span class="tagline">Where paws meet their perfect match</span>
+            </div>
+            <div>
+                <h5>Site Links</h5>
+                <ul class="nav-list">
+                    <li class="nav-item"><a href="index.html">Home</a></li>
+                    <li class="nav-item"><a href="adopt.html">Adopt</a></li>
+                    <li class="nav-item"><a href="tools.html">Tools</a></li>
+                    <li class="nav-item"><a href="quiz.html">Quiz</a></li>
+                    <li class="nav-item"><a href="contact.html">Contact us</a></li>
+                    <li class="nav-item"><a href="contact.html#about">About us</a></li>
+                </ul>
+            </div>
+
+            <div class="social-links">
+                <h5>Follow Us</h5>
+                <a href="#pawfect" target="_blank">
+                    <img src="images/social-logos/fb.svg" alt="Facebook logo" width="20px">
+                </a>
+                <a href="#pawfect" target="_blank">
+                    <img src="images/social-logos/instagram.svg" alt="Instagram logo" width="20px">
+                </a>
+                <a href="#pawfect" target="_blank">
+                    <img src="images/social-logos/twitter.svg" alt="Twitter logo" width="24px">
+                </a>
+            </div>
+
+        </div>
+
+        <p class="copyright">© 2025 Pawfect Pet Adoption | CIS 3532 - Web Technologies</p>
+    </footer>
+    <script src="js/main.js"></script>
+</body>
+
+</html>

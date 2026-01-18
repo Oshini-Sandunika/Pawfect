@@ -1,136 +1,171 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
-  <title>Pawfect Match – Start</title>
+  <title>Pawfect Match - Start</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-   <!-- Google Font -->
+  <!-- Google Font -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700&display=swap" rel="stylesheet">
 
-  
+  <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
+
+  <!-- Google Font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+
+  <link rel="stylesheet" href="css/main.css">
   <link rel="stylesheet" href="css/quiz.css">
 </head>
+
 <body>
+  <header class="site-header">
+    <nav>
+      <ul class="site-menu">
+        <li class="nav-item mobile-only" onclick="showMenu()" id="menu-btn">
+        </li>
+        <li>
+          <a class="nav-item logo" href="index.html" title="Home">
+            <img class="logo-image" src="images/favicon.ico" alt="Pawfect Logo">
+            <div class="site-name">
+              <h4 class="title">Pawfect</h4>
+              <span class="tagline">Where paws meet their perfect match</span>
+            </div>
+          </a>
+        </li>
+        <li class="nav-item spacer"></li>
+        <li><a class="nav-item mobile-hide" href="adopt.html">Adopt</a></li>
+        <li><a class="nav-item mobile-hide" href="quiz.html">Pet Quiz</a></li>
+        <li><a class="nav-item mobile-hide" href="tools.html">Tools</a></li>
+        <li><a class="nav-item mobile-hide" href="contact.html#about">About</a></li>
+        <li><a class="nav-item mobile-hide" href="contact.html#contact">Contact Us</a></li>
+        <li class="btn login-btn" onclick="showLogin()">Login</li>
+      </ul>
+    </nav>
+  </header>
+  <main>
+    <div class="page">
+      <div class="container">
+        <header class="header">
+          <p class="badge">Pawfect Match</p>
+          <h1>What are you looking for today?</h1>
+          <p class="lead">
+            Choose dogs or cats first. We’ll ask different questions to help you find the right breed.
+          </p>
+        </header>
 
-  <div class="page">
-    <div class="container">
-      <header class="header">
-        <p class="badge">Pawfect Match</p>
-        <h1>What are you looking for today?</h1>
-        <p class="lead">
-          Choose dogs or cats first. We’ll ask different questions to help you find the right breed.
-        </p>
-      </header>
+        <main class="options">
+          <a href="#dog-quiz" class="card">
+            <img src="images/dog.webp" alt="Dog" class="card-image">
+            <div class="card-body">
+              <h2>I'm into dogs</h2>
+              <p>
+                From tiny lap dogs to big adventure buddies. Start here to find dog breeds that fit your life.
+              </p>
+              <span class="card-link">Start dog quiz</span>
+            </div>
+          </a>
 
-      <main class="options">
-        <a href="#dog-quiz" class="card">
-          <img src="images/dog.webp" alt="Dog" class="card-image">
-          <div class="card-body">
-            <h2>I'm into dogs</h2>
-            <p>
-              From tiny lap dogs to big adventure buddies. Start here to find dog breeds that fit your life.
-            </p>
-            <span class="card-link">Start dog quiz</span>
-          </div>
-        </a>
+          <a href="#cat-quiz" class="card">
+            <img src="images/cat.jpg" alt="Cat" class="card-image">
+            <div class="card-body">
+              <h2>I'm into cats</h2>
+              <p>
+                Cuddly, independent, or playful. Start here to find cat breeds that match your home and routine.
+              </p>
+              <span class="card-link">Start cat quiz</span>
+            </div>
+          </a>
+        </main>
 
-        <a href="#cat-quiz" class="card">
-          <img src="images/cat.jpg" alt="Cat" class="card-image">
-          <div class="card-body">
-            <h2>I'm into cats</h2>
-            <p>
-              Cuddly, independent, or playful. Start here to find cat breeds that match your home and routine.
-            </p>
-            <span class="card-link">Start cat quiz</span>
-          </div>
-        </a>
-      </main>
+        <footer class="footer">
+          <p>No sign-ups, no tracking. Just a simple way to explore breeds.</p>
+        </footer>
 
-      <footer class="footer">
-        <p>No sign-ups, no tracking. Just a simple way to explore breeds.</p>
-      </footer>
-
+      </div>
     </div>
-  </div>
 
-  <section id="dog-quiz" class="quiz-section">
-    <div class="dog-overlay"></div>
-    <div id="dog-back-to-start" class="floating-back-arrow">
+    <section id="dog-quiz" class="quiz-section">
+      <div class="dog-overlay"></div>
+      <div id="dog-back-to-start" class="floating-back-arrow">
         ↑
-    </div>
-
-    <h2 class="quiz-title">Unlock Your Perfect Pup!</h2>
-
-    <div id="dog-quiz-container" class="quiz-card">
-      <div id="progress-container">
-        <div id="progress-paw"></div>
-        <div id="progress-bar"></div>
-      </div>
-      <div id="question-box">
-        <h3 id="question-text"></h3>
-        <div id="options"></div>
       </div>
 
-      <button id="next-btn" class="quiz-btn" disabled>Next</button>
-      <button id="back-btn" class="quiz-btn secondary-btn hidden">Back</button>
+      <h2 class="quiz-title">Unlock Your Perfect Pup!</h2>
+
+      <div id="dog-quiz-container" class="quiz-card">
+        <div id="progress-container">
+          <div id="progress-paw"></div>
+          <div id="progress-bar"></div>
+        </div>
+        <div id="question-box">
+          <h3 id="question-text"></h3>
+          <div id="options"></div>
+        </div>
+
+        <button id="next-btn" class="quiz-btn" disabled>Next</button>
+        <button id="back-btn" class="quiz-btn secondary-btn hidden">Back</button>
 
 
-      <div id="result-box" class="hidden">
-        <h3>Your Ideal Dog Type</h3>
-        <div id="dog-results-row" class="results-row"></div>
-        <button id="restart-btn" class="quiz-btn">Start Again</button>
+        <div id="result-box" class="hidden">
+          <h3>Your Ideal Dog Type</h3>
+          <div id="dog-results-row" class="results-row"></div>
+          <button id="restart-btn" class="quiz-btn">Start Again</button>
+        </div>
       </div>
-    </div>
 
-  </section>
-
+    </section>
 
 
-  <section id="cat-quiz" class="quiz-section" style="display:none;">
-    <div class="dog-overlay"></div>
 
-    <div id="cat-back-to-start" class="floating-back-arrow">
+    <section id="cat-quiz" class="quiz-section" style="display:none;">
+      <div class="dog-overlay"></div>
+
+      <div id="cat-back-to-start" class="floating-back-arrow">
         ↑
-    </div>
-
-    <h2 class="quiz-title">Find Your Purrfect Match!</h2>
-
-    <div id="cat-quiz-container" class="quiz-card">
-
-      <div id="cat-progress-container" class="progress-wrap">
-        <div id="cat-progress-paw"></div>
-        <div id="cat-progress-bar"></div>
       </div>
 
-      <div id="cat-question-box">
-        <h3 id="cat-question-text"></h3>
-        <div id="cat-options"></div>
+      <h2 class="quiz-title">Find Your Purrfect Match!</h2>
+
+      <div id="cat-quiz-container" class="quiz-card">
+
+        <div id="cat-progress-container" class="progress-wrap">
+          <div id="cat-progress-paw"></div>
+          <div id="cat-progress-bar"></div>
+        </div>
+
+        <div id="cat-question-box">
+          <h3 id="cat-question-text"></h3>
+          <div id="cat-options"></div>
+        </div>
+
+        <button id="cat-next-btn" class="quiz-btn" disabled>Next</button>
+        <button id="cat-back-btn" class="quiz-btn secondary-btn hidden">Back</button>
+
+        <div id="cat-result-box" class="hidden">
+          <h3>Your Ideal Cat Type</h3>
+          <div id="cat-results-row" class="results-row"></div>
+          <button id="cat-restart-btn" class="quiz-btn">Start Again</button>
+        </div>
+
       </div>
 
-      <button id="cat-next-btn" class="quiz-btn" disabled>Next</button>
-      <button id="cat-back-btn" class="quiz-btn secondary-btn hidden">Back</button>
-
-      <div id="cat-result-box" class="hidden">
-        <h3>Your Ideal Cat Type</h3>
-        <div id="cat-results-row" class="results-row"></div>
-        <button id="cat-restart-btn" class="quiz-btn">Start Again</button>
-      </div>
-
-    </div>
-    
-  </section>
+    </section>
+  </main>
 
 
   <script>
     document.addEventListener("DOMContentLoaded", function () {
       const questionText = document.getElementById("question-text");
-      const optionsBox   = document.getElementById("options");
-      const nextBtn      = document.getElementById("next-btn");
-      const resultBox    = document.getElementById("result-box");
-      const resultText   = document.getElementById("dog-result");
+      const optionsBox = document.getElementById("options");
+      const nextBtn = document.getElementById("next-btn");
+      const resultBox = document.getElementById("result-box");
+      const resultText = document.getElementById("dog-result");
 
       const backBtn = document.getElementById("back-btn");
 
@@ -138,96 +173,96 @@
       FULL 10-QUESTION DOG QUIZ WITH BREED SCORING
       ------------------------------------------ */
       const dogQuestions = [
-      {
-        q: "How active is your daily lifestyle?",
-        options: {
-          "Very active (running, hiking daily)": "very_active",
-          "Moderately active": "moderate_active",
-          "Lightly active": "light_active",
-          "Mostly relaxed / indoors": "low_active"
+        {
+          q: "How active is your daily lifestyle?",
+          options: {
+            "Very active (running, hiking daily)": "very_active",
+            "Moderately active": "moderate_active",
+            "Lightly active": "light_active",
+            "Mostly relaxed / indoors": "low_active"
+          }
+        },
+        {
+          q: "How much living space do you have?",
+          options: {
+            "Large house with yard": "large_space",
+            "Medium house/apartment": "medium_space",
+            "Small apartment": "small_space",
+            "Tiny living space / studio": "tiny_space"
+          }
+        },
+        {
+          q: "How much grooming can you manage?",
+          options: {
+            "High grooming (daily brushing okay)": "high_groom",
+            "Medium grooming": "medium_groom",
+            "Low grooming only": "low_groom",
+            "Minimal (almost no grooming)": "minimal_groom"
+          }
+        },
+        {
+          q: "What is your experience with dogs?",
+          options: {
+            "Experienced dog owner": "experienced",
+            "Some experience": "intermediate",
+            "Beginner": "beginner",
+            "Never owned a dog": "first_time"
+          }
+        },
+        {
+          q: "What size dog do you prefer?",
+          options: {
+            "Small": "size_small",
+            "Medium": "size_medium",
+            "Large": "size_large",
+            "No preference": "size_any"
+          }
+        },
+        {
+          q: "How trainable should your dog be?",
+          options: {
+            "Highly trainable": "high_train",
+            "Medium trainability": "medium_train",
+            "Low trainability": "low_train",
+            "Doesn't matter": "train_any"
+          }
+        },
+        {
+          q: "How much barking can you tolerate?",
+          options: {
+            "Very low (quiet dogs only)": "quiet_only",
+            "Some barking is okay": "some_noise",
+            "Barking doesn’t bother me": "noise_ok",
+            "I prefer vocal dogs": "vocal"
+          }
+        },
+        {
+          q: "What climate suits your home best?",
+          options: {
+            "Cold climate": "cold_climate",
+            "Warm climate": "warm_climate",
+            "Both / mixed": "mixed_climate",
+            "Hot climate only": "hot_climate"
+          }
+        },
+        {
+          q: "How much time daily can you dedicate to your dog?",
+          options: {
+            "5+ hours": "time_5",
+            "2–4 hours": "time_3",
+            "1–2 hours": "time_1",
+            "Less than 1 hour": "time_low"
+          }
+        },
+        {
+          q: "Do you need a family- and kid-friendly dog?",
+          options: {
+            "Very important": "family_high",
+            "Somewhat important": "family_medium",
+            "Not important": "family_low",
+            "Not needed": "family_none"
+          }
         }
-      },
-      {
-        q: "How much living space do you have?",
-        options: {
-          "Large house with yard": "large_space",
-          "Medium house/apartment": "medium_space",
-          "Small apartment": "small_space",
-          "Tiny living space / studio": "tiny_space"
-        }
-      },
-      {
-        q: "How much grooming can you manage?",
-        options: {
-          "High grooming (daily brushing okay)": "high_groom",
-          "Medium grooming": "medium_groom",
-          "Low grooming only": "low_groom",
-          "Minimal (almost no grooming)": "minimal_groom"
-        }
-      },
-      {
-        q: "What is your experience with dogs?",
-        options: {
-          "Experienced dog owner": "experienced",
-          "Some experience": "intermediate",
-          "Beginner": "beginner",
-          "Never owned a dog": "first_time"
-        }
-      },
-      {
-        q: "What size dog do you prefer?",
-        options: {
-          "Small": "size_small",
-          "Medium": "size_medium",
-          "Large": "size_large",
-          "No preference": "size_any"
-        }
-      },
-      {
-        q: "How trainable should your dog be?",
-        options: {
-          "Highly trainable": "high_train",
-          "Medium trainability": "medium_train",
-          "Low trainability": "low_train",
-          "Doesn't matter": "train_any"
-        }
-      },
-      {
-        q: "How much barking can you tolerate?",
-        options: {
-          "Very low (quiet dogs only)": "quiet_only",
-          "Some barking is okay": "some_noise",
-          "Barking doesn’t bother me": "noise_ok",
-          "I prefer vocal dogs": "vocal"
-        }
-      },
-      {
-        q: "What climate suits your home best?",
-        options: {
-          "Cold climate": "cold_climate",
-          "Warm climate": "warm_climate",
-          "Both / mixed": "mixed_climate",
-          "Hot climate only": "hot_climate"
-        }
-      },
-      {
-        q: "How much time daily can you dedicate to your dog?",
-        options: {
-          "5+ hours": "time_5",
-          "2–4 hours": "time_3",
-          "1–2 hours": "time_1",
-          "Less than 1 hour": "time_low"
-        }
-      },
-      {
-        q: "Do you need a family- and kid-friendly dog?",
-        options: {
-          "Very important": "family_high",
-          "Somewhat important": "family_medium",
-          "Not important": "family_low",
-          "Not needed": "family_none"
-        }
-      }
       ];
 
       /* ------------------------------------------
@@ -316,7 +351,7 @@
             break;
 
           case "minimal_groom":
-            breedScores["Husky"] += 1;  
+            breedScores["Husky"] += 1;
             break;
 
           /* --- Experience --- */
@@ -471,9 +506,9 @@
       const totalQuestions = dogQuestions.length;
 
       function updateProgressBar() {
-          const progress = ((currentQuestion) / totalQuestions) * 100;
-          document.getElementById("progress-bar").style.width = progress + "%";
-          document.getElementById("progress-paw").style.left = progress + "%";
+        const progress = ((currentQuestion) / totalQuestions) * 100;
+        document.getElementById("progress-bar").style.width = progress + "%";
+        document.getElementById("progress-paw").style.left = progress + "%";
       }
 
 
@@ -526,7 +561,7 @@
         // If quiz is not finished → load next question
         if (currentQuestion < dogQuestions.length) {
           loadQuestion();
-        } 
+        }
         // If quiz is finished → show results
         else {
           finalizeResults();
@@ -534,26 +569,26 @@
       };
 
       const breedImages = {
-        "Labrador Retriever": "/frontend/images/breeds/labradorRetriever.jpg",
-        "Golden Retriever": "/frontend/images/breeds/goldenRetriever.jpg",
-        "German Shepherd": "/frontend/images/breeds/germanShepherd.jpg",
-        "Border Collie": "/frontend/images/breeds/borderCollie.jpg",
-        "Husky": "/frontend/images/breeds/husky.jpg",
-        "Beagle": "/frontend/images/breeds/beagle.jpg",
-        "French Bulldog": "/frontend/images/breeds/frenchBulldog.jpg",
-        "Pug": "/frontend/images/breeds/pug.jpg",
-        "Shih Tzu": "/frontend/images/breeds/shihTzu.jpg",
-        "Corgi": "/frontend/images/breeds/corgi.jpg"
+        "Labrador Retriever": "./images/breeds/labradorRetriever.jpg",
+        "Golden Retriever": "./images/breeds/goldenRetriever.jpg",
+        "German Shepherd": "./images/breeds/germanShepherd.jpg",
+        "Border Collie": "./images/breeds/borderCollie.jpg",
+        "Husky": "./images/breeds/husky.jpg",
+        "Beagle": "./images/breeds/beagle.jpg",
+        "French Bulldog": "./images/breeds/frenchBulldog.jpg",
+        "Pug": "./images/breeds/pug.jpg",
+        "Shih Tzu": "./images/breeds/shihTzu.jpg",
+        "Corgi": "./images/breeds/corgi.jpg"
       };
 
       const catBreedImages = {
-        "Domestic Short Hair": "/frontend/images/cats/dsh.avif",
-        "Domestic Medium Hair": "/frontend/images/cats/dmh.jpg",
-        "Domestic Long Hair": "/frontend/images/cats/dlh.webp",
-        "Tuxedo Cat": "/frontend/images/cats/tuxedo.jpg",
-        "Ginger Cat": "/frontend/images/cats/ginger.webp",
-        "Calico / Tortie": "/frontend/images/cats/calico.jpg",
-        "Black Cat": "/frontend/images/cats/black.jpg"
+        "Domestic Short Hair": "./images/cats/dsh.avif",
+        "Domestic Medium Hair": "./images/cats/dmh.jpg",
+        "Domestic Long Hair": "./images/cats/dlh.webp",
+        "Tuxedo Cat": "./images/cats/tuxedo.jpg",
+        "Ginger Cat": "./images/cats/ginger.webp",
+        "Calico / Tortie": "./images/cats/calico.jpg",
+        "Black Cat": "./images/cats/black.jpg"
       };
 
 
@@ -610,7 +645,7 @@
 
         // Reset breed scores
         for (let breed in breedScores) {
-            breedScores[breed] = 0;
+          breedScores[breed] = 0;
         }
 
         // Clear previous results
@@ -888,17 +923,17 @@
 
       /* NEXT */
       document.getElementById("cat-next-btn").onclick = function () {
-          catCurrent++;
+        catCurrent++;
 
-          if (catCurrent < totalCatQ) {
-              loadCatQuestion();
-          } else {
-              // FIX: make progress bar full before showing results
-              document.getElementById("cat-progress-bar").style.width = "100%";
-              document.getElementById("cat-progress-paw").style.left = "100%";
+        if (catCurrent < totalCatQ) {
+          loadCatQuestion();
+        } else {
+          // FIX: make progress bar full before showing results
+          document.getElementById("cat-progress-bar").style.width = "100%";
+          document.getElementById("cat-progress-paw").style.left = "100%";
 
-              finalizeCatResults();
-          }
+          finalizeCatResults();
+        }
       };
 
 
@@ -971,28 +1006,28 @@
 
       // open dog quiz
       document.querySelector('a[href="#dog-quiz"]').addEventListener("click", function (e) {
-          e.preventDefault();
+        e.preventDefault();
 
-          slideToSection(dogQuiz, landingSection);
+        slideToSection(dogQuiz, landingSection);
 
-          catQuiz.style.display = "none";
+        catQuiz.style.display = "none";
 
-          currentQuestion = 0;
-          loadQuestion();
+        currentQuestion = 0;
+        loadQuestion();
       });
 
 
       // open cat quiz
       document.querySelector('a[href="#cat-quiz"]').addEventListener("click", function (e) {
-          e.preventDefault();
+        e.preventDefault();
 
-          slideToSection(catQuiz, landingSection);
+        slideToSection(catQuiz, landingSection);
 
-          dogQuiz.style.display = "none";
+        dogQuiz.style.display = "none";
 
-          catCurrent = 0;
-          catAnswers = [];
-          loadCatQuestion();
+        catCurrent = 0;
+        catAnswers = [];
+        loadCatQuestion();
       });
 
 
@@ -1005,37 +1040,75 @@
         hide.style.opacity = "0";
 
         setTimeout(() => {
-            hide.style.display = "none";
+          hide.style.display = "none";
 
-            // reset shown section before animating
-            show.style.display = "block";
-            show.style.transform = "translateY(40px)";
-            show.style.opacity = "0";
+          // reset shown section before animating
+          show.style.display = "block";
+          show.style.transform = "translateY(40px)";
+          show.style.opacity = "0";
 
-            setTimeout(() => {
-                // slide show section DOWN & fade in
-                show.style.transform = "translateY(0)";
-                show.style.opacity = "1";
-            }, 20);
+          setTimeout(() => {
+            // slide show section DOWN & fade in
+            show.style.transform = "translateY(0)";
+            show.style.opacity = "1";
+          }, 20);
         }, 450);
       }
 
       document.getElementById("dog-back-to-start").onclick = () => {
-          slideToSection(landingSection, dogQuiz);
+        slideToSection(landingSection, dogQuiz);
       };
 
       document.getElementById("cat-back-to-start").onclick = () => {
-          slideToSection(landingSection, catQuiz);
+        slideToSection(landingSection, catQuiz);
       };
 
 
-    
+
 
 
     });
 
-    
+
 
   </script>
+  <footer class="site-footer">
+    <div class="footer-nav">
+      <div class="footer-site-logo">
+        <img class="logo-image" src="images/favicon.ico" alt="Pawfect Logo" width="64px">
+        <h4 class="title">Pawfect</h4>
+        <span class="tagline">Where paws meet their perfect match</span>
+      </div>
+      <div>
+        <h5>Site Links</h5>
+        <ul class="nav-list">
+          <li class="nav-item"><a href="index.html">Home</a></li>
+          <li class="nav-item"><a href="adopt.html">Adopt</a></li>
+          <li class="nav-item"><a href="tools.html">Tools</a></li>
+          <li class="nav-item"><a href="quiz.html">Quiz</a></li>
+          <li class="nav-item"><a href="contact.html#contact">Contact us</a></li>
+          <li class=" nav-item"><a href="contact.html#about">About us</a></li>
+        </ul>
+      </div>
+
+      <div class="social-links">
+        <h5>Follow Us</h5>
+        <a href="#pawfect" target="_blank">
+          <img src="images/social-logos/fb.svg" alt="Facebook logo" width="20px">
+        </a>
+        <a href="#pawfect" target="_blank">
+          <img src="images/social-logos/instagram.svg" alt="Instagram logo" width="20px">
+        </a>
+        <a href="#pawfect" target="_blank">
+          <img src="images/social-logos/twitter.svg" alt="Twitter logo" width="24px">
+        </a>
+      </div>
+
+    </div>
+
+    <p class="copyright">© 2025 Pawfect Pet Adoption | CIS 3532 - Web Technologies</p>
+  </footer>
+  <script src="js/main.js"></script>
 </body>
+
 </html>

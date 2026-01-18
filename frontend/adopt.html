@@ -1,61 +1,127 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
-    <title>Pawfect | Adopt a Pet</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Google Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+    <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
+
+    <title>Pawfect | Adopt a Pet</title>
+    <link rel="stylesheet" href="css/main.css">
     <link rel="stylesheet" href="css/adopt.css">
+
 </head>
+
 <body>
+    <header class="site-header">
+        <nav>
+            <ul class="site-menu">
+                <li class="nav-item mobile-only" onclick="showMenu()" id="menu-btn">
+                </li>
+                <li>
+                    <a class="nav-item logo" href="index.html" title="Home">
+                        <img class="logo-image" src="images/favicon.ico" alt="Pawfect Logo">
+                        <div class="site-name">
+                            <h4 class="title">Pawfect</h4>
+                            <span class="tagline">Where paws meet their perfect match</span>
+                        </div>
+                    </a>
+                </li>
+                <li class="nav-item spacer"></li>
+                <li><a class="nav-item mobile-hide" href="adopt.html">Adopt</a></li>
+                <li><a class="nav-item mobile-hide" href="quiz.html">Pet Quiz</a></li>
+                <li><a class="nav-item mobile-hide" href="tools.html">Tools</a></li>
+                <li><a class="nav-item mobile-hide" href="contact.html#about">About</a></li>
+                <li><a class="nav-item mobile-hide" href="contact.html#contact">Contact Us</a></li>
+                <li class="btn login-btn" onclick="showLogin()">Login</li>
+            </ul>
+        </nav>
+    </header>
+    <main>
 
-<header class="navbar">
-    <h1>🐾 Pawfect</h1>
-    <nav>
-        <a href="#">Home</a>
-        <a class="active" href="#">Adopt</a> <a href="#">Tools</a>
-        <a href="about-contact.html">About</a>
-        <a href="about-contact.html#contactForm">Contact</a>
-    </nav>
-</header>
+        <section class="hero">
+            <h2>Our Adoptable Pets</h2>
+            <p>Browse our available pets and find the perfect addition to your family.</p>
 
-<section class="adopt-hero">
-    <h2>Find Your Furry Soulmate</h2>
-    <p>Browse our available pets and find the perfect addition to your family.</p>
-    
-    <div class="filter-container">
-        <button class="filter-btn active" data-filter="all">All Pets</button>
-        <button class="filter-btn" data-filter="dog">Dogs</button>
-        <button class="filter-btn" data-filter="cat">Cats</button>
-        <button class="filter-btn" data-filter="bird">Birds</button>
-    </div>
-</section>
+            <div class="filter-container">
+                <button class="filter-btn active" data-filter="all">All Pets</button>
+                <button class="filter-btn" data-filter="dog">Dogs</button>
+                <button class="filter-btn" data-filter="cat">Cats</button>
+                <button class="filter-btn" data-filter="bird">Birds</button>
+            </div>
+        </section>
 
-<section class="gallery-section">
-    <div class="pet-grid" id="petGrid">
-        </div>
-</section>
+        <section class="gallery-section">
+            <div class="pet-grid" id="petGrid">
+            </div>
+        </section>
 
-<div id="petModal" class="modal">
-    <div class="modal-content">
-        <span class="close-btn">&times;</span>
-        <div class="modal-body">
-            <img src="" alt="Pet Image" id="modalImg">
-            <div class="modal-info">
-                <h3 id="modalName">Pet Name</h3>
-                <p class="species-breed"><span id="modalSpecies">Species</span> | <span id="modalBreed">Breed</span></p>
-                <p><strong>Age:</strong> <span id="modalAge"></span></p>
-                <p class="description" id="modalDesc">Description goes here...</p>
-                <a href="about-contact.html#contactForm" class="adopt-btn">Adopt Now</a>
+        <div id="petModal" class="modal">
+            <div class="modal-content">
+                <span class="close-btn">&times;</span>
+
+                <div class="modal-img-container">
+                    <img src="" alt="Pet Image" id="modalImg">
+                </div>
+
+                <div class="modal-info">
+                    <h3 id="modalName">Pet Name</h3>
+                    <p style="color: #777; font-style: italic; margin-bottom: 15px;">
+                        <span id="modalSpecies">Species</span> | <span id="modalBreed">Breed</span>
+                    </p>
+                    <p><strong>Age:</strong> <span id="modalAge"></span></p>
+                    <p id="modalDesc" style="line-height: 1.6; color: #444; margin-bottom: 20px;">Description...</p>
+
+                    <a href="contact.html#contact" class="adopt-btn">Adopt Me</a>
+                </div>
             </div>
         </div>
-    </div>
-</div>
+    </main>
 
-<footer>
-    <p>© 2025 Pawfect Pet Adoption | CIS 3532 – Web Technologies</p>
-</footer>
+    <footer class="site-footer">
+        <div class="footer-nav">
+            <div class="footer-site-logo">
+                <img class="logo-image" src="images/favicon.ico" alt="Pawfect Logo" width="64px">
+                <h4 class="title">Pawfect</h4>
+                <span class="tagline">Where paws meet their perfect match</span>
+            </div>
+            <div>
+                <h5>Site Links</h5>
+                <ul class="nav-list">
+                    <li class="nav-item"><a href="index.html">Home</a></li>
+                    <li class="nav-item"><a href="adopt.html">Adopt</a></li>
+                    <li class="nav-item"><a href="tools.html">Tools</a></li>
+                    <li class="nav-item"><a href="quiz.html">Quiz</a></li>
+                    <li class="nav-item"><a href="contact.html#contact">Contact us</a></li>
+                    <li class=" nav-item"><a href="contact.html#about">About us</a></li>
+                </ul>
+            </div>
 
-<script src="js/adopt.js"></script>
+            <div class="social-links">
+                <h5>Follow Us</h5>
+                <a href="#pawfect" target="_blank">
+                    <img src="images/social-logos/fb.svg" alt="Facebook logo" width="20px">
+                </a>
+                <a href="#pawfect" target="_blank">
+                    <img src="images/social-logos/instagram.svg" alt="Instagram logo" width="20px">
+                </a>
+                <a href="#pawfect" target="_blank">
+                    <img src="images/social-logos/twitter.svg" alt="Twitter logo" width="24px">
+                </a>
+            </div>
 
+        </div>
+
+        <p class="copyright">© 2025 Pawfect Pet Adoption | CIS 3532 - Web Technologies</p>
+    </footer>
+
+    <script src="js/adopt.js"></script>
+    <script src="js/main.js"></script>
 </body>
+
 </html>

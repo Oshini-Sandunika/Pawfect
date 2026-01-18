@@ -1,5 +1,4 @@
-// 1. PET DATA (Mock Data)
-// Ideally, replace "placeholder.jpg" with real images in your /MemberPics/ or /images/ folder
+// 1. MOCK DATA
 const pets = [
     {
         id: 1,
@@ -8,7 +7,7 @@ const pets = [
         breed: "Golden Retriever",
         age: "2 years",
         description: "Bella is a friendly and energetic Golden who loves playing fetch and swimming. Great with kids!",
-        image: "https://placehold.co/400x300/F5F1E8/5D4037?text=Bella" 
+        image: "images/dogs/dog1.jpeg" 
     },
     {
         id: 2,
@@ -17,7 +16,7 @@ const pets = [
         breed: "Siamese",
         age: "4 years",
         description: "Mittens is a calm, independent cat who enjoys sunbathing and quiet environments.",
-        image: "https://placehold.co/400x300/F5F1E8/5D4037?text=Mittens"
+        image: "images/cats/tuxedo.jpg"
     },
     {
         id: 3,
@@ -26,7 +25,7 @@ const pets = [
         breed: "Beagle",
         age: "1 year",
         description: "Charlie is a curious puppy who loves to sniff around and explore. Needs a fenced yard.",
-        image: "https://placehold.co/400x300/F5F1E8/5D4037?text=Charlie"
+        image: "images/dogs/dog2.jpeg"
     },
     {
         id: 4,
@@ -35,7 +34,7 @@ const pets = [
         breed: "Parakeet",
         age: "2 years",
         description: "A cheerful singer who loves to chirp in the mornings. Comes with a cage.",
-        image: "https://placehold.co/400x300/F5F1E8/5D4037?text=Tweety"
+        image: "images/birds/bird1.jpeg"
     },
     {
         id: 5,
@@ -44,7 +43,7 @@ const pets = [
         breed: "Tabby",
         age: "3 months",
         description: "A playful kitten full of energy. She loves chasing laser pointers.",
-        image: "https://placehold.co/400x300/F5F1E8/5D4037?text=Luna"
+        image: "images/cats/dlh.webp"
     },
     {
         id: 6,
@@ -53,7 +52,7 @@ const pets = [
         breed: "German Shepherd",
         age: "5 years",
         description: "Max is a loyal protector and very well trained. Loves long walks.",
-        image: "https://placehold.co/400x300/F5F1E8/5D4037?text=Max"
+        image: "images/dogs/dog3.jpeg"
     }
 ];
 
@@ -75,21 +74,21 @@ const modalDesc = document.getElementById('modalDesc');
 function renderPets(filter = 'all') {
     petGrid.innerHTML = ''; // Clear existing
 
-    const filteredPets = filter === 'all' 
-        ? pets 
+    const filteredPets = filter === 'all'
+        ? pets
         : pets.filter(pet => pet.species.toLowerCase() === filter.toLowerCase());
 
     filteredPets.forEach(pet => {
         const card = document.createElement('div');
         card.classList.add('pet-card');
-        
+
         card.innerHTML = `
             <img src="${pet.image}" alt="${pet.name}">
             <h3>${pet.name}</h3>
             <p>${pet.species}</p>
             <button class="details-btn" onclick="openModal(${pet.id})">View Details</button>
         `;
-        
+
         petGrid.appendChild(card);
     });
 }
@@ -97,18 +96,15 @@ function renderPets(filter = 'all') {
 // 4. FILTER EVENT LISTENERS
 filterBtns.forEach(btn => {
     btn.addEventListener('click', () => {
-        // Remove active class from all
         filterBtns.forEach(b => b.classList.remove('active'));
-        // Add active class to clicked
         btn.classList.add('active');
-        
         const filterValue = btn.getAttribute('data-filter');
         renderPets(filterValue);
     });
 });
 
 // 5. MODAL FUNCTIONS
-window.openModal = function(id) {
+window.openModal = function (id) {
     const pet = pets.find(p => p.id === id);
     if (!pet) return;
 
@@ -126,7 +122,6 @@ closeBtn.addEventListener('click', () => {
     modal.classList.remove('show');
 });
 
-// Close modal if clicking outside content
 window.addEventListener('click', (e) => {
     if (e.target === modal) {
         modal.classList.remove('show');
