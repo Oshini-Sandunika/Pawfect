@@ -9,12 +9,14 @@
   <style>
     body {
       /* Uses global variables from style.css */
-      background: var(--bg-beige);
+      background: var(--card-bg);
       display: flex;
       justify-content: center;
       align-items: center;
       height: 100vh;
+      width: 350px;
       margin: 0;
+      overflow: hidden;
     }
 
     .login-card {
@@ -23,8 +25,7 @@
       color: var(--text-dark);
       padding: 40px;
       width: 350px;
-      border-radius: 12px;
-      box-shadow: 0 4px 15px rgba(93, 64, 55, 0.15);
+
       /* Brownish shadow */
       text-align: center;
       animation: fadeIn 0.8s ease;

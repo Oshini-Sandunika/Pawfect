@@ -8,7 +8,7 @@ function showLogin() {
     // add iframe for login page
     const loginFrame = document.createElement("iframe");
     loginFrame.src = "frames/login.html";
-    loginFrame.width = "400";
+    loginFrame.width = "350";
     loginFrame.height = "450";
     loginFrame.style.border = "none";
     loginModal.appendChild(loginFrame);
