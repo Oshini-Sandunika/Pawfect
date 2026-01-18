@@ -175,6 +175,10 @@ footer .footer-site-logo .tagline {
     font-weight: 100;
 }
 
+#mobile-menu {
+    display: none;
+}
+
 @media (max-width: 768px) {
     footer .footer-nav {
         flex-direction: column;
@@ -193,9 +197,6 @@ footer .footer-site-logo .tagline {
         display: block !important;
     }
 
-    #mobile-menu {
-        display: none;
-    }
 
     #menu-btn {
         background-image: url("../images/menu.svg");
