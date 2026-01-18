@@ -48,6 +48,394 @@
             margin-bottom: 1rem;
             display: block;
         }
+
+        /* ---------- TOOL MODAL STYLES ---------- */
+        .tool-modal {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.45);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            padding: 20px;
+        }
+
+        .tool-modal.active {
+            display: flex;
+        }
+
+        .tool-modal-card {
+            width: 100%;
+            max-width: 720px;
+            background: var(--card-bg);
+            border-radius: 12px;
+            box-shadow: 0 8px 22px rgba(0, 0, 0, 0.18);
+            padding: 28px;
+            position: relative;
+            animation: fadeIn 0.35s ease;
+            max-height: 85vh;
+            overflow: auto;
+        }
+
+        .tool-modal-title {
+            margin: 0 0 10px;
+            color: var(--primary-brown);
+            text-align: center;
+        }
+
+        .tool-modal-subtitle {
+            margin: 0 0 18px;
+            text-align: center;
+            color: #666;
+            font-size: 0.95rem;
+        }
+
+        .tool-close {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            width: 34px;
+            height: 34px;
+            border-radius: 50%;
+            border: none;
+            background: rgba(0, 0, 0, 0.06);
+            cursor: pointer;
+            font-size: 18px;
+            line-height: 34px;
+            color: #444;
+        }
+
+        .tool-close:hover {
+            background: rgba(0, 0, 0, 0.12);
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* ---------- Adoption Cost Estimator Styles (inside modal) ---------- */
+        .adoption-cost-form label {
+            display: block;
+            margin-top: 12px;
+            font-weight: 700;
+            color: var(--primary-brown);
+            text-align: left;
+        }
+
+        .adoption-cost-form select {
+            width: 100%;
+            padding: 10px;
+            margin-top: 6px;
+            border-radius: 8px;
+            border: 1px solid #ccc;
+            font-family: inherit;
+            box-sizing: border-box;
+        }
+
+        .adoption-cost-form .check {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-top: 10px;
+            font-weight: 600;
+            color: #555;
+        }
+
+        .adoption-cost-form input[type="checkbox"] {
+            transform: translateY(1px);
+        }
+
+        .adoption-cost-result {
+            margin-top: 18px;
+            background: #ffe6d5;
+            padding: 14px;
+            border-radius: 10px;
+            text-align: center;
+            font-weight: 800;
+            color: var(--primary-brown);
+        }
+
+        .adoption-cost-result span {
+            display: inline-block;
+            margin-left: 6px;
+            color: #ff6f00;
+        }
+
+        /* ---------- Monthly Budget Tool Styles (THEME MATCHED) ---------- */
+        .monthly-tool .header {
+            text-align: center;
+            margin-bottom: 18px;
+        }
+
+        .monthly-tool .header h1 {
+            color: var(--primary-brown);
+            font-size: 1.9em;
+            margin-bottom: 6px;
+        }
+
+        .monthly-tool .header p {
+            color: #666;
+            font-size: 1.02em;
+        }
+
+        .monthly-tool .form-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 18px;
+            margin-bottom: 18px;
+        }
+
+        .monthly-tool .form-group {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .monthly-tool label {
+            font-weight: 700;
+            color: var(--primary-brown);
+            margin-bottom: 8px;
+            font-size: 0.95em;
+        }
+
+        .monthly-tool select {
+            padding: 12px 15px;
+            border: 2px solid #e6e0dc;
+            border-radius: 10px;
+            font-size: 1em;
+            transition: all 0.2s ease;
+            background: white;
+            cursor: pointer;
+            font-family: inherit;
+        }
+
+        .monthly-tool select:focus {
+            outline: none;
+            border-color: var(--secondary-brown);
+            box-shadow: 0 0 0 3px rgba(93, 64, 55, 0.12);
+        }
+
+        .monthly-tool .options-section {
+            background: #f7f2ee;
+            padding: 18px;
+            border-radius: 15px;
+            margin-bottom: 18px;
+        }
+
+        .monthly-tool .options-section h3 {
+            color: var(--primary-brown);
+            margin-bottom: 12px;
+            font-size: 1.1em;
+        }
+
+        .monthly-tool .checkbox-group {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 12px;
+        }
+
+        .monthly-tool .checkbox-item {
+            display: flex;
+            align-items: center;
+            padding: 12px;
+            background: white;
+            border-radius: 10px;
+            transition: all 0.2s ease;
+            cursor: pointer;
+            border: 1px solid #eee;
+        }
+
+        .monthly-tool .checkbox-item:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 14px rgba(93, 64, 55, 0.12);
+        }
+
+        .monthly-tool .checkbox-item input[type="checkbox"] {
+            width: 18px;
+            height: 18px;
+            margin-right: 10px;
+            cursor: pointer;
+            accent-color: var(--secondary-brown);
+        }
+
+        .monthly-tool .checkbox-item label {
+            margin: 0;
+            cursor: pointer;
+            flex: 1;
+            color: #333;
+            font-weight: 700;
+        }
+
+        .monthly-tool .checkbox-item .cost {
+            color: var(--secondary-brown);
+            font-weight: 800;
+            font-size: 0.9em;
+        }
+
+        .monthly-tool .calculate-btn {
+            width: 100%;
+            padding: 14px;
+            background: var(--primary-brown);
+            color: var(--text-light);
+            border: none;
+            border-radius: 12px;
+            font-size: 1.05em;
+            font-weight: 800;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            box-shadow: 0 6px 16px rgba(93, 64, 55, 0.22);
+            font-family: inherit;
+        }
+
+        .monthly-tool .calculate-btn:hover {
+            background: var(--secondary-brown);
+            transform: translateY(-2px);
+        }
+
+        .monthly-tool .result-section {
+            margin-top: 18px;
+            padding: 20px;
+            background: #f7f2ee;
+            border-radius: 15px;
+            color: #222;
+            display: none;
+            animation: slideIn 0.35s ease;
+            border: 1px solid #eadfd9;
+        }
+
+        .monthly-tool .result-section.show {
+            display: block;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateX(-10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .monthly-tool .result-header h2 {
+            color: var(--primary-brown);
+        }
+
+        .monthly-tool .total-cost {
+            font-size: 2em;
+            font-weight: 900;
+            text-align: center;
+            margin: 12px 0 6px;
+            color: var(--secondary-brown);
+        }
+
+        .monthly-tool .breakdown {
+            background: white;
+            padding: 16px;
+            border-radius: 12px;
+            border: 1px solid #eee;
+        }
+
+        .monthly-tool .breakdown h3 {
+            color: var(--primary-brown);
+            margin-bottom: 10px;
+        }
+
+        .monthly-tool .breakdown-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px 0;
+            border-bottom: 1px solid #eee;
+            gap: 10px;
+        }
+
+        .monthly-tool .breakdown-item:last-child {
+            border-bottom: none;
+        }
+
+        .monthly-tool .breakdown-label {
+            font-size: 1em;
+            color: #333;
+        }
+
+        .monthly-tool .breakdown-value {
+            font-weight: 900;
+            font-size: 1.02em;
+            white-space: nowrap;
+            color: var(--secondary-brown);
+        }
+
+        /* ---------- Human Year Converter Styles ---------- */
+        .human-tool label {
+            display: block;
+            margin-top: 12px;
+            font-weight: 800;
+            color: var(--primary-brown);
+            text-align: left;
+        }
+
+        .human-tool select,
+        .human-tool input {
+            width: 100%;
+            padding: 12px 14px;
+            margin-top: 6px;
+            border-radius: 10px;
+            border: 2px solid #e6e0dc;
+            font-family: inherit;
+            box-sizing: border-box;
+        }
+
+        .human-tool input:focus,
+        .human-tool select:focus {
+            outline: none;
+            border-color: var(--secondary-brown);
+            box-shadow: 0 0 0 3px rgba(93, 64, 55, 0.12);
+        }
+
+        .human-tool .calc-btn {
+            width: 100%;
+            margin-top: 16px;
+            padding: 14px;
+            background: var(--primary-brown);
+            color: var(--text-light);
+            border: none;
+            border-radius: 12px;
+            font-weight: 900;
+            cursor: pointer;
+            transition: 0.2s ease;
+        }
+
+        .human-tool .calc-btn:hover {
+            background: var(--secondary-brown);
+            transform: translateY(-2px);
+        }
+
+        .human-tool .human-result {
+            margin-top: 16px;
+            background: #f7f2ee;
+            border: 1px solid #eadfd9;
+            padding: 16px;
+            border-radius: 12px;
+            text-align: center;
+        }
+
+        .human-tool .human-result .big {
+            display: block;
+            font-size: 2rem;
+            font-weight: 900;
+            color: var(--secondary-brown);
+            margin-top: 8px;
+        }
     </style>
 </head>
 
@@ -77,7 +465,6 @@
         </nav>
     </header>
     <main>
-
         <section class="hero">
             <h2>Pet Ownership Tools</h2>
             <p>Planning for a new pet? Use our calculators and converters to get ready for your new family member.</p>
@@ -90,7 +477,7 @@
                 <h3>Adoption Cost Estimator</h3>
                 <p>Calculate the initial costs of adopting a pet, including vaccinations, supplies, and fees.</p>
                 <br>
-                <button class="cta-btn" onclick="alert('Calculator feature coming soon!')">Launch Calculator</button>
+                <button class="cta-btn" type="button" onclick="openTool('adoptionCostModal')">Launch Calculator</button>
             </div>
 
             <div class="tool-card">
@@ -98,7 +485,7 @@
                 <h3>Monthly Care Budget</h3>
                 <p>Estimate the ongoing monthly expenses for food, grooming, and insurance.</p>
                 <br>
-                <button class="cta-btn" onclick="alert('Budget feature coming soon!')">Calculate Budget</button>
+                <button class="cta-btn" type="button" onclick="openTool('monthlyBudgetModal')">Calculate Budget</button>
             </div>
 
             <div class="tool-card">
@@ -106,7 +493,7 @@
                 <h3>Human Year Converter</h3>
                 <p>Wondering how old your dog or cat is in human years? Find out here.</p>
                 <br>
-                <button class="cta-btn" onclick="alert('Converter feature coming soon!')">Convert Age</button>
+                <button class="cta-btn" type="button" onclick="openTool('humanYearModal')">Convert Age</button>
             </div>
 
         </div>
@@ -147,6 +534,326 @@
 
         <p class="copyright">© 2025 Pawfect Pet Adoption | CIS 3532 - Web Technologies</p>
     </footer>
+
+    <!-- ---------- TOOL MODAL: Adoption Cost Estimator ---------- -->
+    <div class="tool-modal" id="adoptionCostModal" aria-hidden="true">
+        <div class="tool-modal-card">
+            <button class="tool-close" type="button" aria-label="Close"
+                onclick="closeTool('adoptionCostModal')">×</button>
+
+            <h2 class="tool-modal-title">Adoption Cost Estimator</h2>
+            <p class="tool-modal-subtitle">Estimate the initial costs for your new pet.</p>
+
+            <form class="adoption-cost-form" id="costForm">
+                <label for="petType">Pet Type</label>
+                <select id="petType">
+                    <option value="dog">Dog</option>
+                    <option value="cat">Cat</option>
+                    <option value="bird">Bird</option>
+                </select>
+
+                <label for="petSize">Pet Size</label>
+                <select id="petSize">
+                    <option value="small">Small</option>
+                    <option value="medium">Medium</option>
+                    <option value="large">Large</option>
+                </select>
+
+                <label class="check"><input type="checkbox" id="vaccination"> Vaccination</label>
+                <label class="check"><input type="checkbox" id="accessories"> Accessories</label>
+                <label class="check"><input type="checkbox" id="microchip"> Microchip</label>
+            </form>
+
+            <div class="adoption-cost-result">
+                Total Estimated Cost: <span id="totalCost">LKR 0</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- ---------- TOOL MODAL: Monthly Budget Calculator ---------- -->
+    <div class="tool-modal" id="monthlyBudgetModal" aria-hidden="true">
+        <div class="tool-modal-card monthly-tool">
+            <button class="tool-close" type="button" aria-label="Close"
+                onclick="closeTool('monthlyBudgetModal')">×</button>
+
+            <div class="header">
+                <h1>🐾 Monthly Pet Care Cost Calculator</h1>
+                <p>Estimate how much it will cost to care for your new companion</p>
+            </div>
+
+            <div class="form-grid">
+                <div class="form-group">
+                    <label for="monthlyPetType">🐕 Pet Type</label>
+                    <select id="monthlyPetType">
+                        <option value="dog">Dog</option>
+                        <option value="cat">Cat</option>
+                        <option value="rabbit">Rabbit</option>
+                        <option value="bird">Bird</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="monthlySize">📏 Pet Size</label>
+                    <select id="monthlySize">
+                        <option value="small">Small</option>
+                        <option value="medium">Medium</option>
+                        <option value="large">Large</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="monthlyAge">📅 Age Group</label>
+                    <select id="monthlyAge">
+                        <option value="young">Young (Puppy/Kitten)</option>
+                        <option value="adult">Adult</option>
+                        <option value="senior">Senior</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="options-section">
+                <h3>💰 Optional Add-ons</h3>
+                <div class="checkbox-group">
+                    <div class="checkbox-item">
+                        <input type="checkbox" id="monthlyGrooming">
+                        <label for="monthlyGrooming">✂️ Grooming</label>
+                        <span class="cost">+1,500</span>
+                    </div>
+
+                    <div class="checkbox-item">
+                        <input type="checkbox" id="monthlyInsurance">
+                        <label for="monthlyInsurance">🛡️ Pet Insurance</label>
+                        <span class="cost">+2,000</span>
+                    </div>
+
+                    <div class="checkbox-item">
+                        <input type="checkbox" id="monthlyToys">
+                        <label for="monthlyToys">🧸 Toys & Treats</label>
+                        <span class="cost">+1,000</span>
+                    </div>
+
+                    <div class="checkbox-item">
+                        <input type="checkbox" id="monthlyTraining">
+                        <label for="monthlyTraining">🎓 Training</label>
+                        <span class="cost">+2,500</span>
+                    </div>
+                </div>
+            </div>
+
+            <button class="calculate-btn" type="button" onclick="calculateMonthlyCost()">Calculate Monthly Cost</button>
+
+            <div class="result-section" id="monthlyResultSection">
+                <div class="result-header" style="text-align:center; margin-bottom: 10px;">
+                    <h2>Estimated Monthly Cost</h2>
+                </div>
+                <div class="total-cost" id="monthlyTotalCost">LKR 0</div>
+                <div class="breakdown">
+                    <h3>📊 Cost Breakdown</h3>
+                    <div id="monthlyBreakdownDetails"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ---------- TOOL MODAL: Human Year Converter ---------- -->
+    <div class="tool-modal" id="humanYearModal" aria-hidden="true">
+        <div class="tool-modal-card human-tool">
+            <button class="tool-close" type="button" aria-label="Close" onclick="closeTool('humanYearModal')">×</button>
+
+            <h2 class="tool-modal-title">Human Year Converter</h2>
+            <p class="tool-modal-subtitle">Convert your pet’s age into approximate “human years”.</p>
+
+            <label for="humanPetType">Pet Type</label>
+            <select id="humanPetType">
+                <option value="dog">Dog</option>
+                <option value="cat">Cat</option>
+            </select>
+
+            <label for="petAgeYears">Pet Age (years)</label>
+            <input id="petAgeYears" type="number" min="0" step="0.1" placeholder="e.g., 2 or 0.5">
+
+            <button class="calc-btn" type="button" onclick="convertHumanYears()">Convert</button>
+
+            <div class="human-result" id="humanResult" style="display:none;">
+                Approximate human age:
+                <span class="big" id="humanYearsOut">—</span>
+                <small style="color:#666; display:block; margin-top:6px;">
+                    Note: This is an estimate and can vary by breed/health.
+                </small>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // ---------- Generic tool modal handlers ----------
+        function openTool(modalId) {
+            const modal = document.getElementById(modalId);
+            if (!modal) return;
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeTool(modalId) {
+            const modal = document.getElementById(modalId);
+            if (!modal) return;
+            modal.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        // Close when clicking outside
+        ['adoptionCostModal', 'monthlyBudgetModal', 'humanYearModal'].forEach(id => {
+            const modal = document.getElementById(id);
+            modal.addEventListener('click', (e) => {
+                if (e.target.id === id) closeTool(id);
+            });
+        });
+
+        // Close on ESC
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                closeTool('adoptionCostModal');
+                closeTool('monthlyBudgetModal');
+                closeTool('humanYearModal');
+            }
+        });
+
+        // ---------- Adoption Cost Estimator logic ----------
+        const baseCost = { dog: 15000, cat: 10000, bird: 5000 };
+        const sizeCost = { small: 2000, medium: 4000, large: 6000 };
+
+        const petType = document.getElementById("petType");
+        const petSize = document.getElementById("petSize");
+        const vaccination = document.getElementById("vaccination");
+        const accessories = document.getElementById("accessories");
+        const microchip = document.getElementById("microchip");
+        const totalCost = document.getElementById("totalCost");
+
+        function calculateTotal() {
+            let cost = baseCost[petType.value] + sizeCost[petSize.value];
+            if (vaccination.checked) cost += 3000;
+            if (accessories.checked) cost += 2500;
+            if (microchip.checked) cost += 2000;
+            totalCost.textContent = "LKR " + cost.toLocaleString();
+        }
+
+        document.querySelectorAll("#costForm select, #costForm input").forEach(el => {
+            el.addEventListener("change", calculateTotal);
+        });
+
+        calculateTotal();
+
+        // ---------- Monthly Budget Calculator logic ----------
+        function calculateMonthlyCost() {
+            const type = document.getElementById("monthlyPetType").value;
+            const size = document.getElementById("monthlySize").value;
+            const age = document.getElementById("monthlyAge").value;
+
+            const baseCost = { dog: 8000, cat: 5000, rabbit: 3000, bird: 2000 };
+            const sizeMult = { small: 1, medium: 1.2, large: 1.5 };
+            const ageAdd = { young: 1000, adult: 2000, senior: 3500 };
+
+            const petNames = { dog: "Dog", cat: "Cat", rabbit: "Rabbit", bird: "Bird" };
+            const sizeNames = { small: "Small", medium: "Medium", large: "Large" };
+            const ageNames = { young: "Young", adult: "Adult", senior: "Senior" };
+
+            let baseCostValue = baseCost[type];
+            let sizeMultValue = sizeMult[size];
+            let foodCost = Math.round(baseCostValue * sizeMultValue);
+            let medicalCost = ageAdd[age];
+            let total = foodCost + medicalCost;
+
+            let breakdownHTML = `
+                <div class="breakdown-item">
+                    <span class="breakdown-label">🐾 Pet: ${petNames[type]} (${sizeNames[size]})</span>
+                    <span class="breakdown-value"></span>
+                </div>
+                <div class="breakdown-item">
+                    <span class="breakdown-label">🍖 Food & Basic Care</span>
+                    <span class="breakdown-value">LKR ${foodCost.toLocaleString()}</span>
+                </div>
+                <div class="breakdown-item">
+                    <span class="breakdown-label">🩺 Medical (${ageNames[age]})</span>
+                    <span class="breakdown-value">LKR ${medicalCost.toLocaleString()}</span>
+                </div>
+            `;
+
+            if (document.getElementById("monthlyGrooming").checked) {
+                total += 1500;
+                breakdownHTML += `
+                    <div class="breakdown-item">
+                        <span class="breakdown-label">✂️ Grooming</span>
+                        <span class="breakdown-value">LKR 1,500</span>
+                    </div>
+                `;
+            }
+
+            if (document.getElementById("monthlyInsurance").checked) {
+                total += 2000;
+                breakdownHTML += `
+                    <div class="breakdown-item">
+                        <span class="breakdown-label">🛡️ Pet Insurance</span>
+                        <span class="breakdown-value">LKR 2,000</span>
+                    </div>
+                `;
+            }
+
+            if (document.getElementById("monthlyToys").checked) {
+                total += 1000;
+                breakdownHTML += `
+                    <div class="breakdown-item">
+                        <span class="breakdown-label">🧸 Toys & Treats</span>
+                        <span class="breakdown-value">LKR 1,000</span>
+                    </div>
+                `;
+            }
+
+            if (document.getElementById("monthlyTraining").checked) {
+                total += 2500;
+                breakdownHTML += `
+                    <div class="breakdown-item">
+                        <span class="breakdown-label">🎓 Training</span>
+                        <span class="breakdown-value">LKR 2,500</span>
+                    </div>
+                `;
+            }
+
+            document.getElementById("monthlyBreakdownDetails").innerHTML = breakdownHTML;
+            document.getElementById("monthlyTotalCost").innerText = `LKR ${total.toLocaleString()}`;
+
+            const resultSection = document.getElementById("monthlyResultSection");
+            resultSection.classList.add("show");
+        }
+
+        // ---------- Human Year Converter logic ----------
+        function convertHumanYears() {
+            const type = document.getElementById("humanPetType").value;
+            const age = parseFloat(document.getElementById("petAgeYears").value);
+
+            if (isNaN(age) || age < 0) {
+                alert("Please enter a valid pet age (0 or higher).");
+                return;
+            }
+
+            let humanYears = 0;
+
+            if (type === "dog") {
+                // Common estimate: first 2 years = 10.5 each, then 4 per year
+                if (age <= 2) humanYears = age * 10.5;
+                else humanYears = 21 + (age - 2) * 4;
+            } else if (type === "cat") {
+                // Common estimate: 1st year 15, 2nd year +9, then +4
+                if (age <= 1) humanYears = age * 15;
+                else if (age <= 2) humanYears = 15 + (age - 1) * 9;
+                else humanYears = 24 + (age - 2) * 4;
+            }
+
+            humanYears = Math.round(humanYears * 10) / 10;
+
+            document.getElementById("humanYearsOut").textContent = `${humanYears} years`;
+            document.getElementById("humanResult").style.display = "block";
+        }
+    </script>
+
     <script src="js/main.js"></script>
 </body>
 
