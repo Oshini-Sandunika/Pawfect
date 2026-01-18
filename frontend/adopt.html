@@ -12,8 +12,8 @@
     <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
 
     <title>Pawfect | Adopt a Pet</title>
-    <link rel="stylesheet" href="css/index.css">
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/adopt.css">
 
 </head>
 
@@ -21,6 +21,8 @@
     <header class="site-header">
         <nav>
             <ul class="site-menu">
+                <li class="nav-item mobile-only" onclick="showMenu()" id="menu-btn">
+                </li>
                 <li>
                     <a class="nav-item logo" href="index.html" title="Home">
                         <img class="logo-image" src="images/favicon.ico" alt="Pawfect Logo">
@@ -31,11 +33,12 @@
                     </a>
                 </li>
                 <li class="nav-item spacer"></li>
-                <li><a class="nav-item" href="adopt.html">Adopt</a></li>
-                <li><a class="nav-item" href="quiz.html">Pet Quiz</a></li>
-                <li><a class="nav-item" href="tools.html">Tools</a></li>
-                <li><a class="nav-item" href="contact.html">Contact Us</a></li>
-                <li class="login-btn" onclick="showLogin()">Login</li>
+                <li><a class="nav-item mobile-hide" href="adopt.html">Adopt</a></li>
+                <li><a class="nav-item mobile-hide" href="quiz.html">Pet Quiz</a></li>
+                <li><a class="nav-item mobile-hide" href="tools.html">Tools</a></li>
+                <li><a class="nav-item mobile-hide" href="contact.html#about">About</a></li>
+                <li><a class="nav-item mobile-hide" href="contact.html#contact">Contact Us</a></li>
+                <li class="btn login-btn" onclick="showLogin()">Login</li>
             </ul>
         </nav>
     </header>
@@ -74,7 +77,7 @@
                     <p><strong>Age:</strong> <span id="modalAge"></span></p>
                     <p id="modalDesc" style="line-height: 1.6; color: #444; margin-bottom: 20px;">Description...</p>
 
-                    <a href="about-contact.html#contactForm" class="adopt-btn">Adopt Me</a>
+                    <a href="contact.html#contact" class="adopt-btn">Adopt Me</a>
                 </div>
             </div>
         </div>
@@ -90,12 +93,12 @@
             <div>
                 <h5>Site Links</h5>
                 <ul class="nav-list">
-                    <li class="nav-item"><a href="/">Home</a></li>
+                    <li class="nav-item"><a href="index.html">Home</a></li>
                     <li class="nav-item"><a href="adopt.html">Adopt</a></li>
                     <li class="nav-item"><a href="tools.html">Tools</a></li>
                     <li class="nav-item"><a href="quiz.html">Quiz</a></li>
-                    <li class="nav-item"><a href="contact.html">Contact us</a></li>
-                    <li class="nav-item"><a href="about.html">About us</a></li>
+                    <li class="nav-item"><a href="contact.html#contact">Contact us</a></li>
+                    <li class=" nav-item"><a href="contact.html#about">About us</a></li>
                 </ul>
             </div>
 
