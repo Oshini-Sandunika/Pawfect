@@ -7,7 +7,7 @@ const pets = [
         breed: "Golden Retriever",
         age: "2 years",
         description: "Bella is a friendly and energetic Golden who loves playing fetch and swimming. Great with kids!",
-        image: "https://placehold.co/400x300/323232/FFF?text=Bella" 
+        image: "images/dogs/dog1.jpeg" 
     },
     {
         id: 2,
@@ -16,7 +16,7 @@ const pets = [
         breed: "Siamese",
         age: "4 years",
         description: "Mittens is a calm, independent cat who enjoys sunbathing and quiet environments.",
-        image: "https://placehold.co/400x300/323232/FFF?text=Mittens"
+        image: "images/cats/tuxedo.jpg"
     },
     {
         id: 3,
@@ -25,7 +25,7 @@ const pets = [
         breed: "Beagle",
         age: "1 year",
         description: "Charlie is a curious puppy who loves to sniff around and explore. Needs a fenced yard.",
-        image: "https://placehold.co/400x300/323232/FFF?text=Charlie"
+        image: "images/dogs/dog2.jpeg"
     },
     {
         id: 4,
@@ -34,7 +34,7 @@ const pets = [
         breed: "Parakeet",
         age: "2 years",
         description: "A cheerful singer who loves to chirp in the mornings. Comes with a cage.",
-        image: "https://placehold.co/400x300/323232/FFF?text=Tweety"
+        image: "images/birds/bird1.jpeg"
     },
     {
         id: 5,
@@ -43,7 +43,7 @@ const pets = [
         breed: "Tabby",
         age: "3 months",
         description: "A playful kitten full of energy. She loves chasing laser pointers.",
-        image: "https://placehold.co/400x300/323232/FFF?text=Luna"
+        image: "images/cats/dlh.webp"
     },
     {
         id: 6,
@@ -52,7 +52,7 @@ const pets = [
         breed: "German Shepherd",
         age: "5 years",
         description: "Max is a loyal protector and very well trained. Loves long walks.",
-        image: "https://placehold.co/400x300/323232/FFF?text=Max"
+        image: "images/dogs/dog3.jpeg"
     }
 ];
 
