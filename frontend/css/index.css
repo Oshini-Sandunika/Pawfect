@@ -18,6 +18,29 @@ main {
     flex-grow: 1;
 }
 
+.btn {
+    background-color: #db812d;
+    color: white;
+    border-radius: 4px;
+    text-decoration: none;
+    font-weight: 600;
+
+    align-items: center;
+    margin: auto 4px;
+    padding: 0.5em 1em;
+    outline: #cc721770 1px solid;
+    transition: background 0.3s;
+}
+
+.btn:hover {
+    background-color: #bf7327;
+    cursor: pointer;
+}
+
+.login-btn {
+    height: 32px;
+}
+
 .site-header {
     height: 50px;
 }
@@ -43,22 +66,6 @@ main {
     display: flex;
 }
 
-.site-menu .login-btn {
-    background: #db812d;
-    color: white;
-    border-radius: 4px;
-
-    align-items: center;
-    margin: auto 4px;
-    height: 32px;
-
-    background-color: #db812d;
-}
-
-.site-menu .login-btn:hover {
-    background-color: #bf7327;
-    cursor: pointer;
-}
 
 .nav-item.spacer {
     flex-grow: 1;
