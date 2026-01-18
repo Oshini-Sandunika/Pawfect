@@ -7,7 +7,7 @@ function showLogin() {
 
     // add iframe for login page
     const loginFrame = document.createElement("iframe");
-    loginFrame.src = "login.html";
+    loginFrame.src = "frames/login.html";
     loginFrame.width = "400";
     loginFrame.height = "450";
     loginFrame.style.border = "none";
