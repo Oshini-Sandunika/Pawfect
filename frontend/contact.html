@@ -43,7 +43,8 @@
         </nav>
     </header>
     <main>
-        <section class="hero" style="border-bottom: none;" id="about">
+        <section class="hero" id="about">
+            <img id="site-logo" src="images/favicon.ico" alt="Pawfect Logo">
             <h2>About Pawfect</h2>
             <p>
                 Pawfect is a community-based pet adoption platform designed to support
@@ -51,7 +52,6 @@
                 Our goal is to provide clarity, care guidance, and confidence to adopters.
             </p>
         </section>
-
         <section class="gallery-section" style="background-color: #fff;">
             <h2 style="text-align: center; color: var(--primary-brown); margin-bottom: 10px;">Our Team</h2>
             <div class="team-grid">
@@ -97,33 +97,34 @@
                 </div>
             </div>
         </section>
+
         <section class="hero" id="contact">
             <h2>Get in Touch</h2>
             <p>Have questions or ready to adopt? Fill out the form below and we'll get back to you shortly.</p>
         </section>
 
-        <section style="padding: 2rem 1rem;">
-            <div class="contact-container">
-                <form id="contactFormEl">
-                    <input type="text" id="name" placeholder="Full Name" required>
-                    <input type="email" id="email" placeholder="Email Address" required>
+        <section class="contact-container">
+            <form id="contactFormEl">
+                <h2 style="text-align: center; color: var(--primary-brown); margin-bottom: 10px;">Contact Us</h2>
+                <input type="text" id="name" placeholder="Full Name" required>
+                <input type="email" id="email" placeholder="Email Address" required>
 
-                    <select id="pet" required>
-                        <option value="">Interested Pet / Topic</option>
-                        <option>Dog Adoption</option>
-                        <option>Cat Adoption</option>
-                        <option>Bird Adoption</option>
-                        <option value="General Inquiry">General Inquiry</option>
-                    </select>
+                <select id="pet" required>
+                    <option value="">Interested Pet / Topic</option>
+                    <option>Dog Adoption</option>
+                    <option>Cat Adoption</option>
+                    <option>Bird Adoption</option>
+                    <option value="General Inquiry">General Inquiry</option>
+                </select>
 
-                    <textarea id="message" rows="5" placeholder="Message..." required></textarea>
+                <textarea id="message" rows="5" placeholder="Message..." required></textarea>
 
-                    <button type="submit" class="cta-btn" style="width: 100%; border: none; cursor: pointer;">Submit
-                        Application</button>
-                    <p id="formStatus"></p>
-                </form>
-            </div>
+                <button type="submit" class="cta-btn" style="width: 100%; border: none; cursor: pointer;">Submit
+                    Application</button>
+                <p id="formStatus"></p>
+            </form>
         </section>
+
     </main>
     <footer class="site-footer">
         <div class="footer-nav">

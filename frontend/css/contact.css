@@ -1,77 +1,95 @@
-    /* --- TEAM GRID STYLES --- */
-    .team-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-        gap: 2rem;
-        margin-top: 2rem;
-        max-width: 1200px;
-        margin-left: auto;
-        margin-right: auto;
-    }
+/* --- TEAM GRID STYLES --- */
+.team-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+}
 
-    .member {
-        background: var(--card-bg);
-        padding: 1.5rem;
-        border-radius: 12px;
-        box-shadow: 0 4px 10px rgba(93, 64, 55, 0.1);
-        text-align: center;
-        transition: transform 0.3s;
-    }
 
-    .member:hover {
-        transform: translateY(-5px);
-    }
+.member {
+    background: var(--card-bg);
+    padding: 1.5rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(93, 64, 55, 0.1);
+    text-align: center;
+    transition: transform 0.3s;
+}
 
-    .member img {
-        width: 100px;
-        height: 100px;
-        border-radius: 50%;
-        margin-bottom: 1rem;
-        object-fit: cover;
-        border: 3px solid var(--accent-tan);
-    }
+.member:hover {
+    transform: translateY(-5px);
+}
 
-    .member h4 {
-        color: var(--primary-brown);
-        margin-bottom: 5px;
-    }
+.member img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    margin-bottom: 1rem;
+    object-fit: cover;
+    border: 3px solid var(--accent-tan);
+}
 
-    .member p {
-        font-size: 0.9rem;
-        color: #666;
-    }
+.member h4 {
+    color: var(--primary-brown);
+    margin-bottom: 5px;
+}
 
-    /* --- FORM STYLES --- */
-    .contact-container {
-        max-width: 600px;
-        margin: 0 auto;
-        background: var(--card-bg);
-        padding: 40px;
-        border-radius: 12px;
-        box-shadow: 0 4px 15px rgba(93, 64, 55, 0.15);
-    }
+.member p {
+    font-size: 0.9rem;
+    color: #666;
+}
 
-    form input,
-    form select,
-    form textarea {
-        width: 100%;
-        padding: 12px;
-        margin-bottom: 15px;
-        border: 1px solid #ccc;
-        border-radius: 6px;
-        font-family: inherit;
-        box-sizing: border-box;
-    }
+/* --- FORM STYLES --- */
+.contact-container {
+    max-width: 600px;
+    margin: 0 auto;
+    background: var(--card-bg);
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(93, 64, 55, 0.15);
+}
 
-    form input:focus,
-    form select:focus,
-    form textarea:focus {
-        outline: 2px solid var(--secondary-brown);
-        border-color: transparent;
-    }
+form input,
+form select,
+form textarea {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-family: inherit;
+    box-sizing: border-box;
+}
 
-    #formStatus {
-        margin-top: 15px;
-        font-weight: bold;
-        text-align: center;
-    }
+form input:focus,
+form select:focus,
+form textarea:focus {
+    outline: 2px solid var(--secondary-brown);
+    border-color: transparent;
+}
+
+#formStatus {
+    margin-top: 15px;
+    font-weight: bold;
+    text-align: center;
+}
+
+#about {
+    margin-bottom: 0;
+}
+
+#site-logo {
+    width: 80px;
+    margin-bottom: 1rem;
+}
+
+.gallery-section {
+    padding: 24px 10px;
+}
+
+.contact-container {
+    margin-bottom: 2em;
+}
