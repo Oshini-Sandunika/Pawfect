@@ -7,7 +7,7 @@ const pets = [
         breed: "Golden Retriever",
         age: "2 years",
         description: "Bella is a friendly and energetic Golden who loves playing fetch and swimming. Great with kids!",
-        image: "https://placehold.co/400x300/323232/FFF?text=Bella" 
+        image: "https://placehold.co/400x300/323232/FFF?text=Bella"
     },
     {
         id: 2,
@@ -74,21 +74,21 @@ const modalDesc = document.getElementById('modalDesc');
 function renderPets(filter = 'all') {
     petGrid.innerHTML = ''; // Clear existing
 
-    const filteredPets = filter === 'all' 
-        ? pets 
+    const filteredPets = filter === 'all'
+        ? pets
         : pets.filter(pet => pet.species.toLowerCase() === filter.toLowerCase());
 
     filteredPets.forEach(pet => {
         const card = document.createElement('div');
         card.classList.add('pet-card');
-        
+
         card.innerHTML = `
             <img src="${pet.image}" alt="${pet.name}">
             <h3>${pet.name}</h3>
             <p>${pet.species}</p>
             <button class="details-btn" onclick="openModal(${pet.id})">View Details</button>
         `;
-        
+
         petGrid.appendChild(card);
     });
 }
@@ -104,7 +104,7 @@ filterBtns.forEach(btn => {
 });
 
 // 5. MODAL FUNCTIONS
-window.openModal = function(id) {
+window.openModal = function (id) {
     const pet = pets.find(p => p.id === id);
     if (!pet) return;
 

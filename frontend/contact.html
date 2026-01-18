@@ -15,43 +15,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/index.css">
     <link rel="stylesheet" href="css/style.css">
-
-    <style>
-        /* --- FORM STYLES --- */
-        .contact-container {
-            max-width: 600px;
-            margin: 0 auto;
-            background: var(--card-bg);
-            padding: 40px;
-            border-radius: 12px;
-            box-shadow: 0 4px 15px rgba(93, 64, 55, 0.15);
-        }
-
-        form input,
-        form select,
-        form textarea {
-            width: 100%;
-            padding: 12px;
-            margin-bottom: 15px;
-            border: 1px solid #ccc;
-            border-radius: 6px;
-            font-family: inherit;
-            box-sizing: border-box;
-        }
-
-        form input:focus,
-        form select:focus,
-        form textarea:focus {
-            outline: 2px solid var(--secondary-brown);
-            border-color: transparent;
-        }
-
-        #formStatus {
-            margin-top: 15px;
-            font-weight: bold;
-            text-align: center;
-        }
-    </style>
+    <link rel="stylesheet" href="css/contact.css">
 </head>
 
 <body>
@@ -71,14 +35,67 @@
                 <li><a class="nav-item" href="adopt.html">Adopt</a></li>
                 <li><a class="nav-item" href="quiz.html">Pet Quiz</a></li>
                 <li><a class="nav-item" href="tools.html">Tools</a></li>
-                <li><a class="nav-item" href="contact.html">Contact Us</a></li>
-                <li class="login-btn" onclick="showLogin()">Login</li>
+                <li><a class="nav-item" href="contact.html#contact">Contact Us</a></li>
+                <li class=" login-btn" onclick="showLogin()">Login</li>
             </ul>
         </nav>
     </header>
     <main>
+        <section class="hero" style="border-bottom: none;" id="about">
+            <h2>About Pawfect</h2>
+            <p>
+                Pawfect is a community-based pet adoption platform designed to support
+                local shelters and guide adopters through responsible pet ownership.
+                Our goal is to provide clarity, care guidance, and confidence to adopters.
+            </p>
+        </section>
 
-        <section class="hero">
+        <section class="gallery-section" style="background-color: #fff;">
+            <h2 style="text-align: center; color: var(--primary-brown); margin-bottom: 10px;">Our Team</h2>
+            <div class="team-grid">
+                <div class="member">
+                    <img src="images/MemberPics/Picture1.png" alt="Member">
+                    <h4>Karunanayake D.N</h4>
+                    <p>Monthly Cost UI</p>
+                </div>
+                <div class="member">
+                    <img src="images/MemberPics/Picture2.png" alt="Member">
+                    <h4>Rathnayaka D.R.M.N</h4>
+                    <p>Layout, Header & Footer</p>
+                </div>
+                <div class="member">
+                    <img src="images/MemberPics/Picture3.png" alt="Member">
+                    <h4>Rathnayake R.M.V.S</h4>
+                    <p>Pet Gallery & Filtering</p>
+                </div>
+                <div class="member">
+                    <img src="images/MemberPics/Picture4.png" alt="Member">
+                    <h4>Nishshanka N.M.R.S</h4>
+                    <p>Dynamic Calculations</p>
+                </div>
+                <div class="member">
+                    <img src="images/MemberPics/Picture6.png" alt="Member">
+                    <h4>Thejeswini N.</h4>
+                    <p>Converter & Forms</p>
+                </div>
+                <div class="member">
+                    <img src="images/MemberPics/Picture5.png" alt="Member">
+                    <h4>Lenora R.V.S.C</h4>
+                    <p>Modals & Info Sliders</p>
+                </div>
+                <div class="member">
+                    <img src="images/MemberPics/Picture7.png" alt="Member">
+                    <h4>Jayasundara J.I.Y.D</h4>
+                    <p>Story & Form Animation</p>
+                </div>
+                <div class="member">
+                    <img src="images/MemberPics/Picture8.png" alt="Member">
+                    <h4>Mihindukulasuriya O.S</h4>
+                    <p>Multi-Step Pet Quiz</p>
+                </div>
+            </div>
+        </section>
+        <section class="hero" id="contact">
             <h2>Get in Touch</h2>
             <p>Have questions or ready to adopt? Fill out the form below and we'll get back to you shortly.</p>
         </section>
@@ -120,8 +137,8 @@
                     <li class="nav-item"><a href="adopt.html">Adopt</a></li>
                     <li class="nav-item"><a href="tools.html">Tools</a></li>
                     <li class="nav-item"><a href="quiz.html">Quiz</a></li>
-                    <li class="nav-item"><a href="contact.html">Contact us</a></li>
-                    <li class="nav-item"><a href="about.html">About us</a></li>
+                    <li class="nav-item"><a href="contact.html#contact">Contact us</a></li>
+                    <li class=" nav-item"><a href="contact.html#about">About us</a></li>
                 </ul>
             </div>
 

@@ -4,10 +4,11 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Pawfect | Sign Up</title>
-  <link rel="stylesheet" href="css/style.css">
+  <title>Pawfect | Login</title>
+  <link rel="stylesheet" href="../css/style.css">
   <style>
     body {
+      /* Uses global variables from style.css */
       background: var(--bg-beige);
       display: flex;
       justify-content: center;
@@ -16,43 +17,45 @@
       margin: 0;
     }
 
-    .signup-card {
+    .login-card {
       background: var(--card-bg);
+      /* White */
       color: var(--text-dark);
       padding: 40px;
       width: 350px;
       border-radius: 12px;
       box-shadow: 0 4px 15px rgba(93, 64, 55, 0.15);
+      /* Brownish shadow */
       text-align: center;
       animation: fadeIn 0.8s ease;
     }
 
-    .signup-card h2 {
+    .login-card h2 {
       color: var(--primary-brown);
       margin-bottom: 20px;
       margin-top: 0;
     }
 
-    .signup-card input {
+    .login-card input {
       width: 100%;
       padding: 12px;
       margin: 10px 0;
       border: 1px solid #ccc;
       border-radius: 6px;
       box-sizing: border-box;
+      /* Ensures padding doesn't break width */
     }
 
-    .signup-card input:focus {
+    .login-card input:focus {
       outline: 2px solid var(--secondary-brown);
       border-color: transparent;
     }
 
-    .signup-card button {
+    .login-card button {
       width: 100%;
       padding: 12px;
       margin-top: 10px;
-      background: var(--secondary-brown);
-      /* Slightly lighter for Sign Up */
+      background: var(--primary-brown);
       color: var(--text-light);
       border: none;
       border-radius: 6px;
@@ -61,8 +64,8 @@
       transition: background 0.3s;
     }
 
-    .signup-card button:hover {
-      background: var(--primary-brown);
+    .login-card button:hover {
+      background: var(--secondary-brown);
     }
 
     .switch-link {
@@ -106,16 +109,16 @@
 
 <body>
 
-  <div class="signup-card">
-    <h2>Join the Family</h2>
-    <input type="text" placeholder="Full Name" />
-    <input type="email" placeholder="Email Address" />
+  <div class="login-card">
+    <h2>Welcome Back!</h2>
+    <input type="text" placeholder="Username" />
     <input type="password" placeholder="Password" />
-    <button onclick="alert('Account Created!')">Sign Up</button>
+    <button onclick="alert('Logged in successfully!')">Login</button>
 
     <span class="switch-link">
-      Already have an account? <a href="login.html">Login</a>
+      New here? <a href="./signup.html">Create an Account</a>
     </span>
+
   </div>
 
 </body>
