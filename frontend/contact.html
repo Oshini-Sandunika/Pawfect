@@ -3,8 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pawfect - Where paws meet their perfect match</title>
+    <title>Pawfect | Contact Us</title>
 
     <!-- Google Font -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -13,8 +12,46 @@
 
     <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/index.css">
-    <link rel="stylesheet" href="css/home.css">
+    <link rel="stylesheet" href="css/style.css">
+
+    <style>
+        /* --- FORM STYLES --- */
+        .contact-container {
+            max-width: 600px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(93, 64, 55, 0.15);
+        }
+
+        form input,
+        form select,
+        form textarea {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            font-family: inherit;
+            box-sizing: border-box;
+        }
+
+        form input:focus,
+        form select:focus,
+        form textarea:focus {
+            outline: 2px solid var(--secondary-brown);
+            border-color: transparent;
+        }
+
+        #formStatus {
+            margin-top: 15px;
+            font-weight: bold;
+            text-align: center;
+        }
+    </style>
 </head>
 
 <body>
@@ -40,55 +77,35 @@
         </nav>
     </header>
     <main>
-        <section id="home-landing">
-            <div id="landing-text">
-                <div id="site-branding">
-                    <img class="logo-image" src="images/favicon.ico" alt="Pawfect Logo">
-                    <h1 class="title">Pawfect</h1>
-                </div>
-                <h2>Find Your New Best Friend</h2>
-                <p>Pawfect connects you with loving pets in need of a home. Browse our gallery, take our compatibility
-                    quiz, or learn more about responsible adoption.</p>
-                <a href="adopt.html" class="cta-btn">Browse Pets</a>
-            </div>
-            <div id="landing-image">
-                <img src="images/home/landing-01.webp" alt="Dog and cat">
-            </div>
-        </section>
-        <section id="pet-quiz">
-            <div class="card">
-                <img src="images/home/quiz-dog.webp" alt="dog">
-                <div class="card-body">
-                    <h2 class="card-title">Not sure which pet is right for you?</h2>
-                    <div class="card-content">
-                        <p>Take our quick and fun pet compatibility quiz to find your perfect match!</p>
-                        <a href="quiz.html" class="quiz-btn">Take the Quiz</a>
-                    </div>
-                </div>
 
-            </div>
+        <section class="hero">
+            <h2>Get in Touch</h2>
+            <p>Have questions or ready to adopt? Fill out the form below and we'll get back to you shortly.</p>
         </section>
-        <section id="home-about">
-            <h2>About Pawfect</h2>
-            <p>
-                Pawfect is a community-based pet adoption platform designed to support
-                local shelters and guide adopters through responsible pet ownership.
-                Our goal is to provide clarity, care guidance, and confidence to adopters.
-            </p>
-            <a href="about.html" class="about-btn">Learn More</a>
+
+        <section style="padding: 2rem 1rem;">
+            <div class="contact-container">
+                <form id="contactFormEl">
+                    <input type="text" id="name" placeholder="Full Name" required>
+                    <input type="email" id="email" placeholder="Email Address" required>
+
+                    <select id="pet" required>
+                        <option value="">Interested Pet / Topic</option>
+                        <option>Dog Adoption</option>
+                        <option>Cat Adoption</option>
+                        <option>Bird Adoption</option>
+                        <option value="General Inquiry">General Inquiry</option>
+                    </select>
+
+                    <textarea id="message" rows="5" placeholder="Message..." required></textarea>
+
+                    <button type="submit" class="cta-btn" style="width: 100%; border: none; cursor: pointer;">Submit
+                        Application</button>
+                    <p id="formStatus"></p>
+                </form>
+            </div>
         </section>
     </main>
-
-    <script>
-        const landingImage = document.querySelector('#landing-image img');
-        const images = ['images/home/landing-01.webp', 'images/home/landing-02.webp', 'images/home/landing-03.webp'];
-        let currentIndex = 0;
-        setInterval(() => {
-            currentIndex = (currentIndex + 1) % images.length;
-            landingImage.src = images[currentIndex];
-        }, 5000);
-    </script>
-
     <footer class="site-footer">
         <div class="footer-nav">
             <div class="footer-site-logo">
@@ -125,7 +142,11 @@
 
         <p class="copyright">© 2025 Pawfect Pet Adoption | CIS 3532 - Web Technologies</p>
     </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+    <script src="js/contact.js"></script>
     <script src="js/login.js"></script>
+
 </body>
 
 </html>
