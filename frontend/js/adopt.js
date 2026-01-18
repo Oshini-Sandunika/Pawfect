@@ -7,7 +7,7 @@ const pets = [
         breed: "Golden Retriever",
         age: "2 years",
         description: "Bella is a friendly and energetic Golden who loves playing fetch and swimming. Great with kids!",
-        image: "https://placehold.co/400x300/323232/FFF?text=Bella" 
+        image: "images/dogs/dog1.jpeg" 
     },
     {
         id: 2,
