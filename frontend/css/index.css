@@ -26,6 +26,7 @@ main {
     position: fixed;
     display: flex;
     align-items: stretch;
+    z-index: 1000;
 
     width: 100vw;
     padding-right: 4px;
@@ -93,6 +94,10 @@ main {
 .nav-item.logo .logo-image {
     width: 2.6em;
     margin-right: 12px;
+}
+
+.site-menu .nav-item.mobile-only {
+    display: none;
 }
 
 .login-modal {
@@ -168,4 +173,59 @@ footer .footer-site-logo>* {
 footer .footer-site-logo .tagline {
     font-size: 12px;
     font-weight: 100;
+}
+
+@media (max-width: 768px) {
+    footer .footer-nav {
+        flex-direction: column;
+        row-gap: 1.2em;
+    }
+
+    footer .social-links {
+        margin: 0 auto;
+    }
+
+    .site-menu .nav-item.mobile-hide {
+        display: none;
+    }
+
+    .site-menu .nav-item.mobile-only {
+        display: block !important;
+    }
+
+    #mobile-menu {
+        display: none;
+    }
+
+    #menu-btn {
+        background-image: url("../images/menu.svg");
+        background-size: contain;
+        background-repeat: no-repeat;
+        width: 24px;
+        height: 24px;
+        margin-left: 12px;
+    }
+
+    #mobile-menu.show {
+        display: flex;
+        flex-direction: column;
+        position: fixed;
+        top: 50px;
+        width: 100vw;
+        background-color: rgba(255, 255, 255, 0.9);
+        backdrop-filter: blur(4px);
+        box-shadow: 0 8px 16px rgba(120, 90, 60, 0.12);
+        z-index: 999;
+    }
+
+    #mobile-menu .nav-item {
+        padding: 12px;
+        border-bottom: 1px solid rgba(120, 90, 60, 0.2);
+    }
+
+    #mobile-menu .nav-item:hover {
+        background-color: rgba(220, 220, 220, 0.26);
+        color: rgba(0, 0, 0);
+    }
+
 }
