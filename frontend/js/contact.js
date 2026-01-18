@@ -2,7 +2,7 @@
     emailjs.init("LTmwx-NLagniGqK64"); // replace from EmailJS
 })();
 
-document.getElementById("contactForm").addEventListener("submit", function(e) {
+document.getElementById("contactFormEl").addEventListener("submit", function(e) {
     e.preventDefault();
 
     const status = document.getElementById("formStatus");
@@ -20,7 +20,7 @@ document.getElementById("contactForm").addEventListener("submit", function(e) {
         .then(() => {
             status.style.color = "green";
             status.textContent = "✅ Message sent successfully!";
-            document.getElementById("contactForm").reset();
+            document.getElementById("contactFormEl").reset();
         })
         .catch(() => {
             status.style.color = "red";
